@@ -1,8 +1,7 @@
 # web-dev-template
 
-1. git clone https://github.com/jannunzi/web-dev-template.git
-1. cd web-dev-template
-1. npm install
-1. mongod
-1. node server.js
-1. browse to localhost:3000
+a. I'm a graduate student at Northeastern and I my work experience is not that much.
+b. This repository is for webdev.
+c. i. https://li-zhuoyi-webdev.herokuapp.com/
+   ii. https://li-zhuoyi-webdev.herokuapp.com/project/index.html
+   iii. https://li-zhuoyi-webdev.herokuapp.com/assignment/index.html
