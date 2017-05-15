@@ -1,6 +1,6 @@
 #Zhuoyi Li
 
-a. I'm a graduate student at Northeastern and I my work experience is not that much.
+a. I'm a graduate student at Northeastern and my work experience is not that much.
 
 b. I'm from China.
 
