@@ -1,4 +1,6 @@
-input.form-control {
+input.form-control,
+textarea.form-control,
+select.form-control {
     margin-bottom: 5px;
 }
 
@@ -9,4 +11,46 @@ body {
 
 nav.navbar.navbar-default.navbar-fixed-top {
     padding-right: 15px;
+}
+
+.navbar-default {
+    background-color: #1b6d85;
+    border-color: #1b6d85;
+}
+
+.navbar-default .navbar-brand {
+    color: white;
+}
+
+.navbar-header {
+    width: 100%;
+}
+
+.navbar-default .navbar-link{
+    color: white;
+}
+
+.navbar.navbar-default a {
+    color: white;
+}
+
+.row.navbar-text {
+    width: 100%;
+}
+
+.wd-widget {
+    margin-bottom: 10px;
+}
+
+.wd-widget > img {
+    width: 100%;
+}
+
+.wd-widget > .wd-widget-toolbar{
+    position: absolute;
+    right: 15px;
+    background: white;
+    opacity: 0.9;
+    padding: 5px;
+    border-bottom-left-radius: 10px;
 }
