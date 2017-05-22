@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
+    <link href="../css/style.css" rel="stylesheet"/>
 </head>
 <body>
 
@@ -13,16 +13,16 @@
     <div class="container-fluid">
         <div class="navbar-header">
 
-            <a class="navbar-brand" href="widget-list.html">
+            <a class="navbar-brand" href="page-list.html">
                 <span class="glyphicon glyphicon-chevron-left"></span>
             </a>
 
             <a class="navbar-brand" href="#">
-                Widget Edit
+                Edit Page
             </a>
 
             <p class="navbar-text pull-right">
-                <a href="widget-list.html" class="navbar-link">
+                <a href="page-list.html" class="navbar-link">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </p>
@@ -31,39 +31,27 @@
 </nav>
 
 <div class="container-fluid">
-
     <label for="name">Name</label>
     <input class="form-control"
-           placeholder="facebook"
-           value="Joker Xue"
+           placeholder="Page Name"
+           value="Blog Post"
            id="name"/>
 
-    <label for="text">Text</label>
+    <label for="title">Title</label>
     <input class="form-control"
-           placeholder="facebook"
-           value="The New MV From Joker Xue"
-           id="text"/>
+           id="title"
+           value="Lorem ipsum"
+           placeholder="Page Title"
+           class="form-control"/>
 
-    <label for="url">URL</label>
-    <input class="form-control"
-           placeholder="www.google.com"
-           value="http://youtube.be/uLWLashCXHE"
-           id="url"/>
-
-    <label for="width">Width</label>
-    <input class="form-control"
-           placeholder="50%"
-           value="100%"
-           id="width"/>
-
-    <a href="widget-list.html" class="btn btn-block btn-danger">Delete</a>
-
+    <a href="page-list.html" class="btn btn-block btn-danger">Delete</a>
 </div>
+
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <p class="navbar-text pull-right">
-            <a href="profile.html">
+            <a href="../User/profile.html">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </p>

@@ -5,37 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
+    <link href="../css/style.css" rel="stylesheet"/>
 </head>
 <body>
 
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <p class="navbar-text pull-left">
-                <a href="website-list.html" class="navbar-link">
+        <div class="row navbar-header">
+
+            <div class="col-md-1 col-sm-3 col-xs-4">
+                <a class="navbar-brand" href="website-list.html">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
-            </p>
-            <a class="navbar-brand" href="#">
-                Pages
-            </a>
-            <p class="navbar-text pull-right">
-                <a href="page-new.html" class="navbar-link">
-                    <span class="glyphicon glyphicon-plus"></span>
+            </div>
+
+            <div class="col-md-2 hidden-sm hidden-xs">
+                <a class="navbar-brand" href="website-list.html">
+                    Websites
                 </a>
-            </p>
+            </div>
+
+            <div class="col-sm-1 hidden-xs">
+                <p class="navbar-text pull-right">
+                    <a href="website-new.html" class="navbar-link">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </a>
+                </p>
+            </div>
+
+            <div class="col-xs-8">
+                <div class="navbar-header navbar-brand">
+                    <a id="title" href="website-edit.html">
+                        Edit Website
+                    </a>
+                    <p class="pull-right">
+                        <a href="website-list.html" class="navbar-link">
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </a>
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </nav>
 
 <div class="container-fluid">
-    <ul class="list-group">
+    <div class="row">
+        <div class="col-xs-4 hidden-xs">
+            <div class="container-fluid">
+                <ul class="list-group">
 
-        <li class="list-group-item active">
+                    <li class="list-group-item active">
 
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-xs-9">
+                <div class="col-lg-4 col-md-7 col-xs-10">
                     <h5>
                         Name
                     </h5>
@@ -44,7 +68,7 @@
                 <div class="col-lg-3 visible-lg">
                     <h5>
                         Created
-                        </h5>
+                    </h5>
                 </div>
 
                 <div class="col-md-3 hidden-sm hidden-xs">
@@ -53,15 +77,16 @@
                     </h5>
                 </div>
 
-                <div class="col-xs-3">
+                <div class="col-xs-2">
                 </div>
             </div>
         </li>
 
         <li class="list-group-item">
+
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-xs-9">
-                    <a href="widget-list.html">
+                <div class="col-lg-4 col-md-7 col-xs-10">
+                    <a href="../Pages/page-list.html">
                         Cras ju
                     </a>
                 </div>
@@ -74,8 +99,8 @@
                     2/2/2017
                 </div>
 
-                <div class="col-xs-3">
-                    <a href="page-edit.html">
+                <div class="col-xs-2">
+                    <a href="website-edit.html">
                         <span class="glyphicon glyphicon-cog pull-right"></span>
                     </a>
                 </div>
@@ -84,8 +109,8 @@
         <li class="list-group-item">
 
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-xs-9">
-                    <a href="widget-list.html">
+                <div class="col-lg-4 col-md-7 col-xs-10">
+                    <a href="../Pages/page-list.html">
                         Dapibus
                     </a>
                 </div>
@@ -98,8 +123,8 @@
                     5/14/2017
                 </div>
 
-                <div class="col-xs-3">
-                    <a href="page-edit.html">
+                <div class="col-xs-2">
+                    <a href="website-edit.html">
                         <span class="glyphicon glyphicon-cog pull-right"></span>
                     </a>
                 </div>
@@ -108,8 +133,8 @@
         <li class="list-group-item">
 
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-xs-9">
-                    <a href="widget-list.html">
+                <div class="col-lg-4 col-md-7 col-xs-10">
+                    <a href="../Pages/page-list.html">
                         Morbi le
                     </a>
                 </div>
@@ -122,8 +147,8 @@
                     3/20/2017
                 </div>
 
-                <div class="col-xs-3">
-                    <a href="page-edit.html">
+                <div class="col-xs-2">
+                    <a href="website-edit.html">
                         <span class="glyphicon glyphicon-cog pull-right"></span>
                     </a>
                 </div>
@@ -132,8 +157,8 @@
         <li class="list-group-item">
 
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-xs-9">
-                    <a href="widget-list.html">
+                <div class="col-lg-4 col-md-7 col-xs-10">
+                    <a href="../Pages/page-list.html">
                         Porta ac
                     </a>
                 </div>
@@ -146,8 +171,8 @@
                     5/15/2017
                 </div>
 
-                <div class="col-xs-3">
-                    <a href="page-edit.html">
+                <div class="col-xs-2">
+                    <a href="website-edit.html">
                         <span class="glyphicon glyphicon-cog pull-right"></span>
                     </a>
                 </div>
@@ -156,8 +181,8 @@
         <li class="list-group-item">
 
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-xs-9">
-                    <a href="widget-list.html">
+                <div class="col-lg-4 col-md-7 col-xs-10">
+                    <a href="../Pages/page-list.html">
                         Vestibul
                     </a>
                 </div>
@@ -170,20 +195,43 @@
                     4/8/2017
                 </div>
 
-                <div class="col-xs-3">
-                    <a href="page-edit.html">
+                <div class="col-xs-2">
+                    <a href="website-edit.html">
                         <span class="glyphicon glyphicon-cog pull-right"></span>
                     </a>
                 </div>
             </div>
         </li>
     </ul>
+            </div>
+        </div>
+
+
+        <div class="col-sm-8 col-xs-12">
+            <label for="name">Name</label>
+            <input class="form-control"
+                   placeholder="facebook"
+                   value="Alice in Wonderland"
+                   id="name"/>
+
+            <label for="description">Description</label>
+            <textarea id="description"
+                      rows="5"
+                      placeholder="So big it is its onw country"
+                      class="form-control">Alice, an unpretentious and individual 19-year-old, is betrothed to a dunce of an English nobleman. At her engagement party, she escapes the crowd to consider whether to go through with the marriage and falls down a hole in the garden after spotting an unusual rabbit. Arriving in a strange and surreal place called "Underland," she finds herself in a world that resembles the nightmares she had as a child, filled with talking animals, villainous queens and knights, and frumious bandersnatches. Alice realizes that she is there for a reason--to conquer the horrific Jabberwocky and restore the rightful queen to her throne.</textarea>
+
+            <a href="website-list.html" class="btn btn-block btn-danger">Delete</a>
+        </div>
+    </div>
 </div>
+
+
+
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <p class="navbar-text pull-right">
-            <a href="profile.html">
+            <a href="../User/profile.html">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </p>
