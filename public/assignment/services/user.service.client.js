@@ -16,9 +16,20 @@
 
         var api = {
             findUserById: findUserById,
+            findUserByUsername: findUserByUsername,
             findUserByCredentials: findUserByCredentials
         };
         return api;
+
+        function findUserByUsername(username) {
+            var user = users.find(function (user) {
+                return user.username === username;
+            });
+            if (typeof user === 'undefined') {
+                return null;
+            }
+            return user;
+        }
 
         function findUserById(userId) {
             for(var u in users) {
