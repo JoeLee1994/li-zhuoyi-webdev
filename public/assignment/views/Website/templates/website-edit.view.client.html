@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Title</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/style.css" rel="stylesheet"/>
-</head>
-<body>
-
-
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="row navbar-header">
@@ -208,19 +196,26 @@
 
 
         <div class="col-sm-8 col-xs-12">
+
+
+
             <label for="name">Name</label>
             <input class="form-control"
+                   ng-model="model.website.name"
                    placeholder="facebook"
-                   value="Alice in Wonderland"
                    id="name"/>
 
             <label for="description">Description</label>
             <textarea id="description"
                       rows="5"
+                      ng-model="model.website.description"
                       placeholder="So big it is its onw country"
-                      class="form-control">Alice, an unpretentious and individual 19-year-old, is betrothed to a dunce of an English nobleman. At her engagement party, she escapes the crowd to consider whether to go through with the marriage and falls down a hole in the garden after spotting an unusual rabbit. Arriving in a strange and surreal place called "Underland," she finds herself in a world that resembles the nightmares she had as a child, filled with talking animals, villainous queens and knights, and frumious bandersnatches. Alice realizes that she is there for a reason--to conquer the horrific Jabberwocky and restore the rightful queen to her throne.</textarea>
+                      class="form-control"></textarea>
 
-            <a href="website-list.html" class="btn btn-block btn-danger">Delete</a>
+            <a ng-click="model.deleteWebsite(model.websiteId)"
+               class="btn btn-block btn-danger">
+                Delete
+            </a>
         </div>
     </div>
 </div>
@@ -237,6 +232,3 @@
         </p>
     </div>
 </nav>
-
-</body>
-</html>

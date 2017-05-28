@@ -15,11 +15,19 @@
         ];
 
         var api = {
+            createUser: createUser,
             findUserById: findUserById,
             findUserByUsername: findUserByUsername,
             findUserByCredentials: findUserByCredentials
         };
         return api;
+
+        function createUser(user) {
+            user._id = (new Date()).getTime() + "";
+            user.created = new Date();
+            users.push(user);
+            return user;
+        }
 
         function findUserByUsername(username) {
             var user = users.find(function (user) {

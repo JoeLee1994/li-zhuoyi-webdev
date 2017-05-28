@@ -26,5 +26,15 @@
                 controller: 'profileController',
                 controllerAs: 'model'
             })
+            .when('/user/:userId/website', {
+                templateUrl: 'views/Website/templates/website-list.view.client.html',
+                controller: 'websiteListController',
+                controllerAs: 'model'
+            })
+            .when('/user/:userId/website/:websiteId', {
+                templateUrl: 'views/Website/templates/website-edit.view.client.html',
+                controller: 'websiteEditController',
+                controllerAs: 'model'
+            })
     }
 })();
