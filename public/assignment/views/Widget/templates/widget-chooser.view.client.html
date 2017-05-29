@@ -1,0 +1,69 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="row navbar-header">
+
+            <div class="col-xs-5">
+                <a class="navbar-brand" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    Widget List
+                </a>
+            </div>
+
+            <div class="col-xs-7">
+                <div class="navbar-header navbar-brand">
+                    <a id="title" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
+                        Choose Widget
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <ul class="list-group">
+
+        <li class="list-group-item">
+            <a ng-click="model.createWidget('HEADING')">Header</a>
+        </li>
+
+        <li class="list-group-item">
+            <a href="">Label</a>
+        </li>
+
+        <li class="list-group-item">
+            <a href="">HTML</a>
+        </li>
+
+        <li class="list-group-item">
+            <a href="">Text Input</a>
+        </li>
+
+        <li class="list-group-item">
+            <a href="">Link</a>
+        </li>
+
+        <li class="list-group-item">
+            <a href="">Button</a>
+        </li>
+
+        <li class="list-group-item">
+            <a ng-click="model.createWidget('IMAGE')">Image</a>
+        </li>
+
+        <li class="list-group-item">
+            <a ng-click="model.createWidget('YOUTUBE')">Youtube</a>
+        </li>
+
+        <li class="list-group-item">
+            <a href="">Data Table</a>
+        </li>
+
+        <li class="list-group-item">
+            <a href="">Repeater</a>
+        </li>
+
+    </ul>
+</div>
+
+<div ng-include="'views/common/footer.view.client.html'"></div>

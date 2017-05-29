@@ -3,7 +3,7 @@
  */
 (function(){
     angular
-        .module('WAM')
+        .module('WebAppMaker')
         .controller('registerController', registerController);
 
     function registerController($location, userService) {
@@ -15,19 +15,29 @@
         function register(username, password, password2) {
 
             if(username === null || username === '' || typeof username === 'undefined') {
-                model.error = 'username is required';
+                model.error = 'Username is required';
                 return;
             }
 
-            if(password !== password2 || password === null || typeof password === 'undefined') {
-                model.error = "passwords must match";
+            if (password === null || password === '' || typeof password === 'undefined') {
+                model.error = 'Password cannot be empty!';
+                return;
+            }
+
+            if (password2 === null || password2 === '' || typeof password2 === 'undefined') {
+                model.error = 'Verifying Password cannot be empty!';
+                return;
+            }
+
+            if (password !== password2) {
+                model.error = "Passwords must match!";
                 return;
             }
 
             var found = userService.findUserByUsername(username);
 
             if(found !== null) {
-                model.error = "sorry, that username is taken";
+                model.error = "Sorry, this username has been taken.";
             } else {
                 var newUser = {
                     username: username,

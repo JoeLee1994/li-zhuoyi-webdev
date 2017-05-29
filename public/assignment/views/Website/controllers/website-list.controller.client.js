@@ -3,7 +3,7 @@
  */
 (function () {
     angular
-        .module('WAM')
+        .module('WebAppMaker')
         .controller('websiteListController', websiteListController);
 
     function websiteListController($routeParams, websiteService) {
@@ -15,6 +15,5 @@
             model.websites = websiteService.findWebsitesByUser(model.userId);
         }
         init();
-
     }
 })();

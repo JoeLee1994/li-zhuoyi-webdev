@@ -3,7 +3,7 @@
  */
 (function(){
     angular
-        .module('WAM')
+        .module('WebAppMaker')
         .controller('loginController', loginController);
 
     function loginController($location, userService) {
@@ -19,7 +19,7 @@
             if(found !== null) {
                 $location.url('/user/' + found._id);
             } else {
-                model.message = "sorry, " + username + " not found. please try again!";
+                model.message = "Sorry, " + username + " is not found. Please try again!";
             }
         }
     }

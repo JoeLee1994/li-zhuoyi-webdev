@@ -3,20 +3,20 @@
         <div class="row navbar-header">
 
             <div class="col-md-1 col-sm-3 col-xs-4">
-                <a class="navbar-brand" href="website-list.html">
+                <a class="navbar-brand" ng-click="model.updateWebsite(model.websiteId, model.oldWebsite)">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
 
             <div class="col-md-2 hidden-sm hidden-xs">
-                <a class="navbar-brand" href="website-list.html">
+                <a class="navbar-brand" href="">
                     Websites
                 </a>
             </div>
 
             <div class="col-sm-1 hidden-xs">
                 <p class="navbar-text pull-right">
-                    <a href="website-new.html" class="navbar-link">
+                    <a href="#!/user/{{model.userId}}/website/new" class="navbar-link" class="navbar-link">
                         <span class="glyphicon glyphicon-plus"></span>
                     </a>
                 </p>
@@ -24,11 +24,11 @@
 
             <div class="col-xs-8">
                 <div class="navbar-header navbar-brand">
-                    <a id="title" href="website-edit.html">
+                    <a id="title" href="">
                         Edit Website
                     </a>
                     <p class="pull-right">
-                        <a href="website-list.html" class="navbar-link">
+                        <a ng-click="model.updateWebsite(model.websiteId, model.website)" class="navbar-link">
                             <span class="glyphicon glyphicon-ok"></span>
                         </a>
                     </p>
@@ -70,137 +70,36 @@
             </div>
         </li>
 
-        <li class="list-group-item">
+                    <li ng-repeat="oldWebsite in model.oldWebsites" class="list-group-item">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 col-xs-9">
+                                <a href="#!/user/{{model.userId}}/website/{{oldWebsite._id}}/page">
+                                    {{oldWebsite.name}}
+                                </a>
+                            </div>
+                            <div class="col-lg-3 visible-lg">
+                                {{oldWebsite.created | date}}
+                            </div>
+                            <div class="col-md-3 hidden-sm hidden-xs">
+                                {{oldWebsite.accessed | date}}
+                            </div>
+                            <div class="col-xs-3">
+                                <a href="#!/user/{{model.userId}}/website/{{oldWebsite._id}}">
+                                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
 
-            <div class="row">
-                <div class="col-lg-4 col-md-7 col-xs-10">
-                    <a href="../Pages/page-list.html">
-                        Cras ju
-                    </a>
-                </div>
-
-                <div class="col-lg-3 visible-lg">
-                    1/1/2017
-                </div>
-
-                <div class="col-md-3 hidden-sm hidden-xs">
-                    2/2/2017
-                </div>
-
-                <div class="col-xs-2">
-                    <a href="website-edit.html">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </div>
-            </div>
-        </li>
-        <li class="list-group-item">
-
-            <div class="row">
-                <div class="col-lg-4 col-md-7 col-xs-10">
-                    <a href="../Pages/page-list.html">
-                        Dapibus
-                    </a>
-                </div>
-
-                <div class="col-lg-3 visible-lg">
-                    4/30/2017
-                </div>
-
-                <div class="col-md-3 hidden-sm hidden-xs">
-                    5/14/2017
-                </div>
-
-                <div class="col-xs-2">
-                    <a href="website-edit.html">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </div>
-            </div>
-        </li>
-        <li class="list-group-item">
-
-            <div class="row">
-                <div class="col-lg-4 col-md-7 col-xs-10">
-                    <a href="../Pages/page-list.html">
-                        Morbi le
-                    </a>
-                </div>
-
-                <div class="col-lg-3 visible-lg">
-                    9/30/2016
-                </div>
-
-                <div class="col-md-3 hidden-sm hidden-xs">
-                    3/20/2017
-                </div>
-
-                <div class="col-xs-2">
-                    <a href="website-edit.html">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </div>
-            </div>
-        </li>
-        <li class="list-group-item">
-
-            <div class="row">
-                <div class="col-lg-4 col-md-7 col-xs-10">
-                    <a href="../Pages/page-list.html">
-                        Porta ac
-                    </a>
-                </div>
-
-                <div class="col-lg-3 visible-lg">
-                    1/1/2016
-                </div>
-
-                <div class="col-md-3 hidden-sm hidden-xs">
-                    5/15/2017
-                </div>
-
-                <div class="col-xs-2">
-                    <a href="website-edit.html">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </div>
-            </div>
-        </li>
-        <li class="list-group-item">
-
-            <div class="row">
-                <div class="col-lg-4 col-md-7 col-xs-10">
-                    <a href="../Pages/page-list.html">
-                        Vestibul
-                    </a>
-                </div>
-
-                <div class="col-lg-3 visible-lg">
-                    5/1/2016
-                </div>
-
-                <div class="col-md-3 hidden-sm hidden-xs">
-                    4/8/2017
-                </div>
-
-                <div class="col-xs-2">
-                    <a href="website-edit.html">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </div>
-            </div>
-        </li>
-    </ul>
+                </ul>
             </div>
         </div>
 
-
         <div class="col-sm-8 col-xs-12">
 
-
-
             <label for="name">Name</label>
-            <input class="form-control"
+            <input type="text"
+                   class="form-control"
                    ng-model="model.website.name"
                    placeholder="facebook"
                    id="name"/>
@@ -212,23 +111,19 @@
                       placeholder="So big it is its onw country"
                       class="form-control"></textarea>
 
+            <a ng-click="model.updateWebsite(model.websiteId, model.website)"
+               class="btn btn-block btn-success">
+                Update
+            </a>
+
             <a ng-click="model.deleteWebsite(model.websiteId)"
                class="btn btn-block btn-danger">
                 Delete
             </a>
+
         </div>
     </div>
 </div>
 
 
-
-
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <p class="navbar-text pull-right">
-            <a href="../User/profile.html">
-                <span class="glyphicon glyphicon-user"></span>
-            </a>
-        </p>
-    </div>
-</nav>
+<div ng-include="'views/common/footer.view.client.html'"></div>

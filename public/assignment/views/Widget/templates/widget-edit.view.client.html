@@ -1,0 +1,44 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
+          <span class="wd-left glyphicon glyphicon-menu-left">
+          </span>
+                </a>
+            </p>
+            <a class="wd-list navbar-brand" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widgetId}}">
+                Widget Edit
+            </a>
+            <p class="navbar-text pull-right">
+                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
+          <span class="wd-ok glyphicon glyphicon-ok">
+          </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div ng-switch="model.widget.widgetType">
+        <div ng-switch-when="HEADING">
+            <div ng-include="'views/Widget/editors/widget-heading-edit.view.client.html'"></div>
+        </div>
+
+        <div ng-switch-when="IMAGE">
+            <div ng-include="'views/Widget/editors/widget-image-edit.view.client.html'"></div>
+        </div>
+
+        <div ng-switch-when="YOUTUBE">
+            <div ng-include="'views/Widget/editors/widget-youtube-edit.view.client.html'"></div>
+        </div>
+    </div>
+
+    <a class="btn btn-success btn-block"
+       ng-click="model.updateWidget(model.widgetId, model.widget)">Update</a>
+    <a class="btn btn-danger btn-block"
+       ng-click="model.deleteWidget(model.widgetId)">Delete</a>
+</div>
+
+<div ng-include="'views/common/footer.view.client.html'"></div>

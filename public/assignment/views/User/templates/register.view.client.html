@@ -17,12 +17,14 @@
                id="password"
                ng-model="password"
                class="form-control"
-               placeholder="password"/>
+               placeholder="12345678a"/>
 
+     <label for="password2">Verify Your Password</label>
         <input type="password"
+               id="password2"
                ng-model="password2"
                class="form-control"
-               placeholder="verify password"/>
+               placeholder="12345678a"/>
 
         <a ng-click="model.register(username, password, password2)" class="btn btn-primary btn-block">Register</a>
 

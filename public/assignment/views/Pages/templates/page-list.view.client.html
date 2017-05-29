@@ -1,25 +1,24 @@
-
-
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="#!/user/{{model.userId}}" class="navbar-link">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
+                <a href="#!/user/{{model.userId}}/website" class="navbar-link">
+          <span class="wd-left glyphicon glyphicon-menu-left">
+          </span>
                 </a>
             </p>
-            <a class="navbar-brand" href="">
-                Websites
+            <a class="wd-list navbar-brand" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
+                Pages
             </a>
             <p class="navbar-text pull-right">
-                <a href="#!/user/{{model.userId}}/website/new" class="navbar-link">
-                    <span class="glyphicon glyphicon-plus"></span>
+                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/new" class="navbar-link">
+          <span class="wd-ok glyphicon glyphicon-plus">
+          </span>
                 </a>
             </p>
         </div>
     </div>
 </nav>
-
 
 <div class="container-fluid">
     <ul class="list-group">
@@ -36,7 +35,7 @@
                 <div class="col-lg-3 visible-lg">
                     <h5>
                         Created
-                        </h5>
+                    </h5>
                 </div>
 
                 <div class="col-md-3 hidden-sm hidden-xs">
@@ -50,24 +49,21 @@
             </div>
         </li>
 
-        <li ng-repeat="website in model.websites" class="list-group-item">
+        <li ng-repeat="page in model.pages" class="list-group-item">
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-xs-9">
-                    <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">
-                        {{website.name}}
+                    <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">
+                        {{page.name}}
                     </a>
                 </div>
-
                 <div class="col-lg-3 visible-lg">
-                    {{website.created | date}}
+                    {{page.created | date}}
                 </div>
-
                 <div class="col-md-3 hidden-sm hidden-xs">
-                    {{website.accessed | date}}
+                    {{page.accessed | date}}
                 </div>
-
                 <div class="col-xs-3">
-                    <a href="#!/user/{{model.userId}}/website/{{website._id}}">
+                    <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
                         <span class="glyphicon glyphicon-cog pull-right"></span>
                     </a>
                 </div>

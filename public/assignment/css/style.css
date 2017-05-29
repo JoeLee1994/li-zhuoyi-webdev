@@ -13,7 +13,7 @@ nav.navbar.navbar-default.navbar-fixed-top {
     padding-right: 15px;
 }
 
-.navbar-default {
+.navbar-default > div {
     background-color: #1b6d85;
     border-color: #1b6d85;
 }

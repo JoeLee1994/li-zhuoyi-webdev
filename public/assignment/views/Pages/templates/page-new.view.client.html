@@ -1,0 +1,59 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="row navbar-header">
+
+            <div class="col-md-1 col-sm-3 col-xs-4">
+                <a class="navbar-brand" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+
+            <div class="col-md-2 hidden-sm hidden-xs">
+                <a class="navbar-brand" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
+                    Pages
+                </a>
+            </div>
+
+            <div class="col-sm-1 hidden-xs">
+                <p class="navbar-text pull-right">
+                    <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/new" class="navbar-link">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </a>
+                </p>
+            </div>
+
+            <div class="col-xs-8">
+                <a class="navbar-brand" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/new">
+                    New Page
+                </a>
+                <p class="navbar-text pull-right">
+                    <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+        <label for="name">Name</label>
+        <input class="form-control"
+               type="text"
+               ng-model="page.name"
+               placeholder="facebook"
+               id="name"/>
+
+        <label for="form-title">Title</label>
+        <input class="form-control"
+               type="text"
+               id="form-title"
+               ng-model="page.title"
+               placeholder="Own country"/>
+
+    <a ng-click="model.createPage(page)"
+       class="btn btn-block btn-success">Create</a>
+</div>
+
+
+<div ng-include="'views/common/footer.view.client.html'"></div>

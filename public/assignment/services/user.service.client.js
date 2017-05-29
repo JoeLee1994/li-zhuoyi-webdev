@@ -3,7 +3,7 @@
  */
 (function () {
     angular
-        .module('WAM')
+        .module('WebAppMaker')
         .factory('userService', userService);
 
     function userService() {
@@ -18,7 +18,9 @@
             createUser: createUser,
             findUserById: findUserById,
             findUserByUsername: findUserByUsername,
-            findUserByCredentials: findUserByCredentials
+            findUserByCredentials: findUserByCredentials,
+            updateUser: updateUser,
+            deleteUser: deleteUser
         };
         return api;
 
@@ -56,6 +58,18 @@
                 }
             }
             return null;
+        }
+        function updateUser(userId, user) {
+            for (var u in users) {
+                if (users[u]._id === userId)
+                    users[u] = user;
+            }
+        }
+
+        function deleteUser(userId) {
+            var user = findUserById(userId);
+            var index = users.indexOf(user);
+            users.splice(index, 1);
         }
     }
 })();
