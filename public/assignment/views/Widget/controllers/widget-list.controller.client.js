@@ -4,10 +4,9 @@
 (function () {
     angular
         .module('WebAppMaker')
-        .controller('widgetListController', widgetListController);
+        .controller('WidgetListController', WidgetListController);
 
-
-    function widgetListController($sce, $routeParams, widgetService) {
+    function WidgetListController($sce, $routeParams, widgetService) {
 
         var model = this;
 

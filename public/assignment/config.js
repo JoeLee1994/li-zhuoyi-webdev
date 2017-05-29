@@ -13,32 +13,32 @@
             })
             .when('/login', {
                 templateUrl: 'views/User/templates/login.view.client.html',
-                controller: 'loginController',
+                controller: 'LoginController',
                 controllerAs: 'model'
             })
             .when('/register', {
                 templateUrl: 'views/User/templates/register.view.client.html',
-                controller: 'registerController',
+                controller: 'RegisterController',
                 controllerAs: 'model'
             })
             .when('/user/:userId', {
                 templateUrl: 'views/User/templates/profile.view.client.html',
-                controller: 'profileController',
+                controller: 'ProfileController',
                 controllerAs: 'model'
             })
             .when('/user/:userId/website', {
                 templateUrl: 'views/Website/templates/website-list.view.client.html',
-                controller: 'websiteListController',
+                controller: 'WebsiteListController',
                 controllerAs: 'model'
             })
             .when('/user/:userId/website/new', {
                 templateUrl: 'views/Website/templates/website-new.view.client.html',
-                controller: 'websiteNewController',
+                controller: 'NewWebsiteController',
                 controllerAs: 'model'
             })
             .when('/user/:userId/website/:websiteId', {
                 templateUrl: 'views/Website/templates/website-edit.view.client.html',
-                controller: 'websiteEditController',
+                controller: 'EditWebsiteController',
                 controllerAs: 'model'
             })
             .when('/user/:userId/website/:websiteId/page', {
@@ -58,7 +58,7 @@
             })
             .when('/user/:userId/website/:websiteId/page/:pageId/widget', {
                 templateUrl: 'views/Widget/templates/widget-list.view.client.html',
-                controller: 'widgetListController',
+                controller: 'WidgetListController',
                 controllerAs: 'model'
             })
             .when('/user/:userId/website/:websiteId/page/:pageId/widget/new', {

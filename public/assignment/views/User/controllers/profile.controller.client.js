@@ -4,9 +4,9 @@
 (function(){
     angular
         .module('WebAppMaker')
-        .controller('profileController', profileController);
+        .controller('ProfileController', ProfileController);
 
-    function profileController($location, $routeParams, userService) {
+    function ProfileController($location, $routeParams, userService) {
 
         var model = this;
 

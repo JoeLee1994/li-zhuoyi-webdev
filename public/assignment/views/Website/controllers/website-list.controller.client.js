@@ -4,9 +4,9 @@
 (function () {
     angular
         .module('WebAppMaker')
-        .controller('websiteListController', websiteListController);
+        .controller('WebsiteListController', WebsiteListController);
 
-    function websiteListController($routeParams, websiteService) {
+    function WebsiteListController($routeParams, websiteService) {
         var model = this;
 
         model.userId = $routeParams['userId'];

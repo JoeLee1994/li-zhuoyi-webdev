@@ -4,9 +4,9 @@
 (function () {
     angular
         .module('WebAppMaker')
-        .controller('websiteEditController', websiteEditController);
+        .controller('EditWebsiteController', EditWebsiteController);
 
-    function websiteEditController($routeParams, $location, websiteService) {
+    function EditWebsiteController($routeParams, $location, websiteService) {
 
         var model = this;
 
