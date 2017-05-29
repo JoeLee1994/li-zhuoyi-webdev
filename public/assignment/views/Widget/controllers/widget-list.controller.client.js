@@ -15,7 +15,6 @@
         model.websiteId = $routeParams['websiteId'];
         model.pageId = $routeParams['pageId'];
 
-        model.widgets = widgets;
         model.trust = trust;
         model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
         
