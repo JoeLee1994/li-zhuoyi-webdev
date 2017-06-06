@@ -16,13 +16,19 @@
 
             userService
                 .findUserByCredentials(username, password)
-                .then(function (found) {
-                    if(found !== null) {
-                        $location.url('/user/' + found._id);
-                    } else {
-                        model.message = "Sorry, " + username + " is not found. Please try again!";
-                    }
-                });
+                .then(login, loginError);
+
+            function login(found) {
+                if (found) {
+                    $location.url('/user/' + found._id);
+                } else {
+                    model.message = "Sorry, " + username + " is not found. Please try again!";
+                }
+            }
+
+            function loginError() {
+                model.message = "Sorry, not found. Please try again!";
+            }
         }
     }
 })();

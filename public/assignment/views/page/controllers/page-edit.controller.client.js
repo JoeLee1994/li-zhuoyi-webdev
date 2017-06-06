@@ -17,22 +17,37 @@
         model.updatePage = updatePage;
 
         function init() {
-            model.pages = pageService.findPagesByWebsiteId(model.websiteId);
-            model.page = pageService.findPageById(model.pageId);
+            pageService
+                .findAllPagesForWebsite(model.websiteId)
+                .then(function (pages) {
+                    model.pages = pages;
+                    model.oldPages = angular.copy(model.pages);
+                });
+            pageService
+                .findPageById(model.pageId)
+                .then(function (page) {
+                    model.page = page;
+                    model.oldPage = angular.copy(model.page);
+                });
         }
         init();
 
-        model.oldPages = angular.copy(model.pages);
-        model.oldPage = angular.copy(model.page);
 
         function deletePage (pageId) {
-            pageService.deletePage(pageId);
-            $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
+            pageService
+                .deletePage(pageId)
+                .then(function (){
+                    $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
+                });
         }
 
         function updatePage (pageId, page) {
-            pageService.updatePage(pageId, page);
-            $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
+            pageService
+                .updatePage(pageId, page)
+                .then(function (){
+                    $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
+                });
+
         }
     }
 })();

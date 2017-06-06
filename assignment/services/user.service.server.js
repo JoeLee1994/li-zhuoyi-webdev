@@ -10,22 +10,21 @@ var users = [
     {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
 ];
 
-app.get('/api/assignment/user', findUserByCredentials);
+app.get('/api/assignment/user', findAllUsers);
 app.get('/api/assignment/user/:userId', findUserById);
 app.post('/api/assignment/user', createUser);
 app.put('/api/assignment/user/:userId', updateUser);
 app.delete('api/assignment/user/:userId', deleteUser);
 
+
 function deleteUser(req, res) {
     var userId = req.params.userId;
-    for(var u in users) {
-        if(users[u]._id === userId) {
-            users.splice(u, 1);
-            res.sendStatus(200);
-            return;
-        }
-    }
-    res.sendStatus(404);
+    var user = users.find(function (user) {
+        return user._id === userId;
+    });
+    var index = users.indexOf(user);
+    users.splice(index, 1);
+    res.sendStatus(200);
 }
 
 
@@ -44,6 +43,7 @@ function updateUser(req, res) {
 function createUser(req, res) {
     var user = req.body;
     user._id = (new Date()).getTime() + "";
+    user.created = new Date();
     users.push(user);
     res.json(user);
 }
@@ -59,13 +59,13 @@ function findUserById (req, res) {
     res.sendStatus(404);
 }
 
-function findUserByCredentials(req, res) {
+function findAllUsers(req, res) {
     var username = req.query['username'];
     var password = req.query['password'];
-    if(username && password){
-        for(var u in users){
+    if (username && password) {
+        for (var u in users) {
             var user = users[u];
-            if( user.username === username &&
+            if (user.username === username &&
                 user.password === password) {
                 res.json(user);
                 return;
@@ -73,7 +73,17 @@ function findUserByCredentials(req, res) {
         }
         res.sendStatus(404);
         return;
+    } else if (username) {
+        for (var u in users) {
+            var user = users[u];
+            if (user.username === username) {
+                res.json(user);
+                return;
+            }
+        }
+        res.sendStatus(404);
+        return;
     } else {
-        res.send(users);
+        res.json(users);
     }
 }

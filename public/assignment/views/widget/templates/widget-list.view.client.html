@@ -22,7 +22,7 @@
 
 
 <div class="container-fluid">
-
+    <div class="widget-list" wbdv-directives="">
     <div ng-repeat="widget in model.widgets" class="wd-widget">
         <div class="wd-widget-toolbar">
             <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
@@ -49,6 +49,7 @@
                 <div ng-include="'views/widget/templates/widget-youtube.view.client.html'"></div>
             </div>
         </div>
+    </div>
     </div>
 </div>
 
