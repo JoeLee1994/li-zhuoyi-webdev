@@ -14,13 +14,15 @@
 
         function login(username, password) {
 
-            var found = userService.findUserByCredentials(username, password);
-
-            if(found !== null) {
-                $location.url('/user/' + found._id);
-            } else {
-                model.message = "Sorry, " + username + " is not found. Please try again!";
-            }
+            userService
+                .findUserByCredentials(username, password)
+                .then(function (found) {
+                    if(found !== null) {
+                        $location.url('/user/' + found._id);
+                    } else {
+                        model.message = "Sorry, " + username + " is not found. Please try again!";
+                    }
+                });
         }
     }
 })();

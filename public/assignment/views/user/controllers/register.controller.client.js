@@ -34,18 +34,24 @@
                 return;
             }
 
-            var found = userService.findUserByUsername(username);
-
-            if(found !== null) {
-                model.error = "Sorry, this username has been taken.";
-            } else {
-                var newUser = {
-                    username: username,
-                    password: password
-                };
-                newUser = userService.createUser(newUser);
-                $location.url('/user/' + newUser._id);
-            }
+            userService
+                .findUserByUsername(username)
+                .then(
+                    function () {
+                        model.error = "Sorry, this username has been taken.";
+                    },
+                    function () {
+                        var newUser = {
+                            username: username,
+                            password: password
+                        };
+                         return userService
+                            .createUser(newUser);
+                }
+            )
+                .then(function (user) {
+                    $location.url('/user/' + user._id);
+                });
         }
     }
 })();
