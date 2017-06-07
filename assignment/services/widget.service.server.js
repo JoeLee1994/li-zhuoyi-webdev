@@ -29,7 +29,7 @@ function uploadImage(req, res) {
         return widget._id === widgetId;
     });
 
-    widget.url = '/assignment/uploads'+filename;
+    widget.url = '/assignment/uploads/'+filename;
 
     var callbackUrl   = "/assignment/index.html#!/user/"+userId+"/website/"+websiteId+"/page/" + pageId + "/widget/" + widgetId;
 
