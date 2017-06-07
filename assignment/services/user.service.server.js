@@ -25,6 +25,7 @@ function deleteUser(req, res) {
     var index = users.indexOf(user);
     users.splice(index, 1);
     res.sendStatus(200);
+    return;
 }
 
 
