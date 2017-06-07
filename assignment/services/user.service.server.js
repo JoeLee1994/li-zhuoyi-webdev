@@ -14,7 +14,7 @@ app.get('/api/assignment/user', findAllUsers);
 app.get('/api/assignment/user/:userId', findUserById);
 app.post('/api/assignment/user', createUser);
 app.put('/api/assignment/user/:userId', updateUser);
-app.delete('api/assignment/user/:userId', deleteUser);
+app.delete('/api/assignment/user/:userId', deleteUser);
 
 
 function deleteUser(req, res) {
