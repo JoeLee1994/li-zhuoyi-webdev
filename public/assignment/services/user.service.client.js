@@ -33,7 +33,7 @@
 
         function findUserByUsername(username) {
             var url = "/api/assignment/user?username="+username;
-            $http.get(url)
+            return $http.get(url)
                 .then(function (response) {
                     return response.data;
                 });
@@ -56,7 +56,7 @@
 
         function findUserByCredentials(username, password) {
             var url = "/api/assignment/user?username="+username+"&password="+password;
-            $http.get(url)
+            return $http.get(url)
                 .then(function (response) {
                     return response.data;
                 });
