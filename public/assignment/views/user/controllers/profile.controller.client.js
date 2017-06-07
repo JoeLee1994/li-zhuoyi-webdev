@@ -37,8 +37,6 @@
                 .deleteUser(userId)
                 .then(function () {
                     $location.url('/login');
-                }, function () {
-                    model.error = "Unable to delete you";
                 });
         }
     }
