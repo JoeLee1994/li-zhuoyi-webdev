@@ -6,23 +6,35 @@
         .module('WebAppMaker')
         .controller('FlickrImageSearchController', FlickrImageSearchController);
 
-    function FlickrImageSearchController($routeParams,
-                                    $location,
-                                    flickrService,
-                                    widgetService) {
+    function FlickrImageSearchController($routeParams, flickrService, widgetService, $location) {
         var model = this;
-
+        model.searchPhotos = searchPhotos;
+        model.selectPhoto =selectPhoto;
         model.userId = $routeParams['userId'];
         model.websiteId = $routeParams['websiteId'];
         model.pageId = $routeParams['pageId'];
         model.widgetId = $routeParams['widgetId'];
 
-        model.searchPhotos = searchPhotos;
-        model.selectPhoto = selectPhoto;
+        function selectPhoto(photo) {
+            var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server;
+            url += "/" + photo.id + "_" + photo.secret + "_b.jpg";
+            widget =  {'_id': model.widgetId,
+                'name': '',
+                'text': '',
+                'url': url,
+                'widgetType': 'IMAGE',
+                'pageId': model.pageId,
+                'width': ''};
+            widgetService
+                .updateWidget(model.widgetId, widget)
+                .then(function (){
+                    $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget/' + model.widgetId);
+                });
+        }
 
-        function searchPhotos(searchTerm) {
+        function searchPhotos(searchText) {
             flickrService
-                .searchPhotos(searchTerm)
+                .searchPhotos(searchText)
                 .then(function(response) {
                     data = response.data.replace("jsonFlickrApi(","");
                     data = data.substring(0,data.length - 1);
@@ -31,23 +43,5 @@
                 });
 
         }
-
-        function selectPhoto(photo) {
-            var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server;
-            url += "/" + photo.id + "_" + photo.secret + "_b.jpg";
-            widget =  {'_id': model.widgetId,
-                'name': '',
-                'widgetType': 'IMAGE',
-                'pageId': model.pageId,
-                'width': '',
-                'url': url,
-                'text': ''};
-            widgetService
-                .updateWidget(model.widgetId, widget)
-                .then(function (){
-                    $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget/' + model.widgetId);
-                });
-        }
-
     }
 })();
