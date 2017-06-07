@@ -24,6 +24,7 @@
             model.user = user;
         }
 
+
         function updateUser (userId, user) {
             userService
                 .updateUser(userId, user)
@@ -33,10 +34,11 @@
         }
 
         function deleteUser (userId) {
-            userService
-                .deleteUser(userId)
+            userService.deleteUser(userId)
                 .then(function () {
                     $location.url('/login');
+                }, function () {
+                    model.error = "Unable to delete you!";
                 });
         }
     }
