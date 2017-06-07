@@ -55,6 +55,7 @@ function updatePage(req, res) {
             return;
         }
     }
+    res.sendStatus(404);
 }
 
 function deletePage(req, res) {
