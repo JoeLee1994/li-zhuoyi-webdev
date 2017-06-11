@@ -2,6 +2,7 @@
  * Created by Joe on 2017/6/3.
  */
 var app = require('../../express');
+var userModel = require('../models/user/user.model.server');
 
 var users = [
     {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
@@ -43,21 +44,37 @@ function updateUser(req, res) {
 
 function createUser(req, res) {
     var user = req.body;
-    user._id = (new Date()).getTime() + "";
-    user.created = new Date();
-    users.push(user);
-    res.json(user);
+    userModel
+        .createUser(user)
+        .then(function (user) {
+            res.json(user);
+    }, function (err) {
+            res.send(err);
+        });
+
+    //user._id = (new Date()).getTime() + "";
+    //user.created = new Date();
+    //users.push(user);
+    //res.json(user);
 }
 
 function findUserById (req, res) {
     var userId = req.params['userId'];
-    for(var u in users) {
-        if(users[u]._id === userId) {
-            res.send(users[u]);
-            return;
-        }
-    }
-    res.sendStatus(404);
+
+    userModel
+        .findUserById(userId)
+        .then(function (user) {
+            res.json(user);
+        }, function (err) {
+            res.send(err);
+        });
+    //for(var u in users) {
+    //    if(users[u]._id === userId) {
+    //        res.send(users[u]);
+    //        return;
+    //    }
+    //}
+    //res.sendStatus(404);
 }
 
 function findAllUsers(req, res) {
