@@ -42,12 +42,12 @@ function updateWebsite(websiteId, newWebsite) {
 }
 
 //deleteWebsiteFromUser
-function deleteWebsite(userId, websiteId) {
+function deleteWebsite(websiteId) {
     return websiteModel
         .remove({_id: websiteId})
         .then(function (status) {
             return userModel
-                .deleteWebsite(userId, websiteId);
+                .deleteWebsite(websiteId);
         });
 }
 
