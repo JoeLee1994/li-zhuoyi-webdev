@@ -35,13 +35,13 @@
 
                 <div class="col-lg-3 visible-lg">
                     <h5>
-                        Created
+                        Description
                         </h5>
                 </div>
 
                 <div class="col-md-3 hidden-sm hidden-xs">
                     <h5>
-                        Accessed
+                        Created
                     </h5>
                 </div>
 
@@ -59,11 +59,11 @@
                 </div>
 
                 <div class="col-lg-3 visible-lg">
-                    {{website.created | date}}
+                    {{website.description}}
                 </div>
 
                 <div class="col-md-3 hidden-sm hidden-xs">
-                    {{website.accessed | date}}
+                    {{website.dateCreated | date}}
                 </div>
 
                 <div class="col-xs-3">

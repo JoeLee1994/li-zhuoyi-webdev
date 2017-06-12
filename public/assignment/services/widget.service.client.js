@@ -12,7 +12,7 @@
         this.deleteWidget = deleteWidget;
         this.createWidget = createWidget;
         this.updateWidget = updateWidget;
-        this.sortWidget = sortWidget;
+        this.reorderWidget = reorderWidget;
 
 
         function findAllWidgetsForPage(pageId) {
@@ -39,7 +39,7 @@
                 });
         }
 
-        function createWidget(widget, pageId) {
+        function createWidget(pageId, widget) {
             var url = "/api/assignment/page/" + pageId + "/widget";
             return $http.post(url, widget)
                 .then(function (response) {
@@ -55,9 +55,13 @@
                 });
         }
 
-        function sortWidget(initial, final) {
-            var url = "/page/" + $routeParams['pageId'] + "/widget?initial=" + initial + "&final=" + final;
-            return $http.put(url);
+        function reorderWidget (start, end) {
+            var url = "/page/" + $routeParams['pageId'] + "/widget?start=" + start + "&end=" + end;
+            return $http
+                .put(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
     }
 })();

@@ -34,13 +34,13 @@
 
                 <div class="col-lg-3 visible-lg">
                     <h5>
-                        Created
+                        Title
                     </h5>
                 </div>
 
                 <div class="col-md-3 hidden-sm hidden-xs">
                     <h5>
-                        Accessed
+                        Created
                     </h5>
                 </div>
 
@@ -57,10 +57,10 @@
                     </a>
                 </div>
                 <div class="col-lg-3 visible-lg">
-                    {{page.created | date}}
+                    {{page.title}}
                 </div>
                 <div class="col-md-3 hidden-sm hidden-xs">
-                    {{page.accessed | date}}
+                    {{page.dateCreated | date}}
                 </div>
                 <div class="col-xs-3">
                     <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">

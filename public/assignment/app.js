@@ -1,7 +1,7 @@
 /**
  * Created by Joe on 2017/5/26.
  */
-(function(){
+(function () {
     angular
-        .module('WebAppMaker', ['ngRoute']);
+        .module("WebAppMaker", ['ngRoute', 'textAngular']);
 })();

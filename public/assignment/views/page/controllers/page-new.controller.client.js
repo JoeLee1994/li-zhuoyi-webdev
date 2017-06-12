@@ -23,10 +23,10 @@
         }
         init();
 
-        function createPage (page) {
-            page.websiteId = model.websiteId;
+        function createPage (websiteId, page) {
+            //page.websiteId = model.websiteId;
             pageService
-                .createPage(page)
+                .createPage(websiteId, page)
                 .then(function () {
                     $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
                 });

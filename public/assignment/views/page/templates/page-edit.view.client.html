@@ -50,6 +50,13 @@
            id="form-title"
            placeholder="Page Title"/>
 
+    <label for="description">Description</label>
+    <textarea class="form-control"
+              rows="5"
+              ng-model="model.page.description"
+              placeholder="Alice in wonderland hopes to have a sweet dream."
+              id="description"></textarea>
+
     <a ng-click="model.deletePage(model.pageId)" class="btn btn-block btn-danger">Delete</a>
 </div>
 

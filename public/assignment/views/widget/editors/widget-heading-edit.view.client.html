@@ -17,11 +17,7 @@
 <label for="size">Size</label>
 <select id="size"
         class="form-control"
-        ng-model="model.widget.size">
-    <option value="1">1 (Largest)</option>
-    <option value="2">2 (Very Large)</option>
-    <option value="3">3 (Large)</option>
-    <option value="4">4 (Medium)</option>
-    <option value="5">5 (Small)</option>
-    <option value="6">6 (Very Small)</option>
+        ng-model="model.widget.size"
+        ng-options="option.size as option.title for option in model.options">
+    <option value="">Select a size</option>
 </select>

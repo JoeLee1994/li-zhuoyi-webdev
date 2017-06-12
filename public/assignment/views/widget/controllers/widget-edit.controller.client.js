@@ -6,7 +6,7 @@
         .module('WebAppMaker')
         .controller('EditWidgetController', EditWidgetController);
 
-    function EditWidgetController ($routeParams, $location, widgetService) {
+    function EditWidgetController ($routeParams, $location, widgetService, $timeout) {
         var model = this;
 
         model.userId = $routeParams['userId'];
@@ -29,6 +29,32 @@
                 .then(function (widget) {
                     model.widget = widget;
                     model.oldWidget = angular.copy(model.widget);
+
+                    if (model.widget.type === "HEADING") {
+                        $timeout(function () {
+                            model.options = [{
+                                size: "1",
+                                title: "1 (Largest)"
+                            }, {
+                                size: "2",
+                                title: "2 (Very Large)"
+                            }, {
+                                size: "3",
+                                title: "3 (Large)"
+                            }, {
+                                size: "4",
+                                title: "4 (Small)"
+                            }, {
+                                size: "5",
+                                title: "5 (Very Small)"
+                            }, {
+                                size: "6",
+                                title: "6 (Smallest)"
+                            }];
+                        });
+                        // initialize the selection
+                        model.widget.size = "" + widget.size;
+                    }
                 });
         }
         init();

@@ -7,14 +7,42 @@ var websiteModel = mongoose.model('WebsiteModel', websiteSchema);
 var userModel = require('../user/user.model.server');
 
 //api
-websiteModel.findAllWebsites = findAllWebsites;
 websiteModel.createWebsiteForUser = createWebsiteForUser;
+websiteModel.findWebsiteById = findWebsiteById;
 websiteModel.findAllWebsitesForUser = findAllWebsitesForUser;
-websiteModel.deleteWebsiteFromUser = deleteWebsiteFromUser;
+websiteModel.deleteWebsite = deleteWebsite;
+websiteModel.updateWebsite = updateWebsite;
+websiteModel.addPage = addPage;
+websiteModel.deletePage = deletePage;
 
 module.exports = websiteModel;
 
-function deleteWebsiteFromUser(userId, websiteId) {
+function deletePage(pageId) {
+    return websiteModel
+        .find({pages:pageId})
+        .then(function (websites) {
+            var website = websites[0];
+            var index = website.pages.indexOf(pageId);
+            website.pages.splice(index, 1);
+            return website.save();
+        });
+}
+
+function addPage(websiteId, pageId) {
+    return websiteModel
+        .findById(websiteId)
+        .then(function (website) {
+            website.pages.push(pageId);
+            return website.save();
+        });
+}
+
+function updateWebsite(websiteId, newWebsite) {
+    return websiteModel.update({_id: websiteId}, {$set: newWebsite});
+}
+
+//deleteWebsiteFromUser
+function deleteWebsite(userId, websiteId) {
     return websiteModel
         .remove({_id: websiteId})
         .then(function (status) {
@@ -40,6 +68,6 @@ function createWebsiteForUser(userId, website) {
         })
 }
 
-function findAllWebsites() {
-    return websiteModel.find();
+function findWebsiteById(websiteId) {
+    return websiteModel.findById(websiteId);
 }

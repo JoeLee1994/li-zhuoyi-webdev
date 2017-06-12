@@ -17,31 +17,37 @@
 
         function init() {
             widgetService
-                .findAllWidgetsForPage(model.websiteId)
+                .findAllWidgetsForPage(model.pageId)
                 .then(function (widgets) {
                     model.widgets = widgets;
                 });
         }
         init();
 
-        function createWidget (widgetType) {
+        function createWidget (pageId, widgetType) {
             switch (widgetType) {
                 case "HEADING":
-                    widget =  {'_id': '', 'name': '', 'widgetType': '', 'pageId': '', 'size': '', 'text': ''};
+                    widget =  {'name': '', 'type': 'HEADING', '_page': '', 'size': '', 'text': '', 'order': 10000};
+                    break;
+                case "HTML":
+                    widget =  {'name': '', 'type': 'HTML', '_page': '', 'text': '', 'order': 10000};
+                    break;
+                case "TEXT":
+                    widget =  {'name': '', 'type': 'TEXT', '_page': '', 'rows': '', 'placeholder': '', 'formatted': '', 'order': 10000};
                     break;
                 case "IMAGE":
-                    widget =  {'_id': '', 'name': '', 'widgetType': '', 'pageId': '', 'width': '', 'url': '', 'text': ''};
+                    widget =  {'name': '', 'type': 'IMAGE', '_page': '', 'width': '', 'url': '', 'text': '', 'order': 10000};
                     break;
                 case "YOUTUBE":
-                    widget =  {'_id': '', 'name': '', 'widgetType': '', 'pageId': '', 'width': '', 'url': '', 'text': ''};
+                    widget =  {'name': '', 'type': 'YOUTUBE', '_page': '', 'width': '', 'url': '', 'text': '', 'order': 10000};
                     break;
                 default:
                     break;
             }
-            widget.widgetType = widgetType;
-            widget.pageId = model.pageId;
+            // widget.widgetType = widgetType;
+            // widget.pageId = model.pageId;
             widgetService
-                .createWidget(widget, model.pageId)
+                .createWidget(pageId, widget)
                 .then(function (widget) {
                     $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget/' + widget._id);
                 });

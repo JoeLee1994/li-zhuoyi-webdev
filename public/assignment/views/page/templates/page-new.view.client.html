@@ -51,7 +51,14 @@
                ng-model="page.title"
                placeholder="Own country"/>
 
-    <a ng-click="model.createPage(page)"
+    <label for="description">Description</label>
+    <textarea class="form-control"
+              rows="5"
+              ng-model="page.description"
+              placeholder="Alice in wonderland hopes to have a sweet dream."
+              id="description"></textarea>
+
+    <a ng-click="model.createPage(model.websiteId, page)"
        class="btn btn-block btn-success">Create</a>
 </div>
 
