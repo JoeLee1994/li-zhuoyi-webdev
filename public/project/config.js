@@ -9,6 +9,9 @@
     function configuration($routeProvider) {
         $routeProvider
             .when('/', {
+                templateUrl: 'home.html'
+            })
+            .when('/search', {
                 templateUrl: 'omdb.view.client.html',
                 controller: 'omdbController',
                 controllerAs: 'model'

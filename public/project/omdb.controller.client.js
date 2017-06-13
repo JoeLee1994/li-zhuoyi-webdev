@@ -20,7 +20,7 @@
                 .then(renderMovieDetails);
 
             function renderMovieDetails(response) {
-                model.movie = response.data;
+                model.movie = response;
             }
         }
 
