@@ -27,7 +27,7 @@
                     Edit Page
                 </a>
                 <p class="navbar-text pull-right">
-                    <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
+                    <a ng-click="model.updatePage(model.pageId, model.page)" class="navbar-link">
                         <span class="glyphicon glyphicon-ok"></span>
                     </a>
                 </p>
@@ -35,6 +35,55 @@
         </div>
     </div>
 </nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-4 hidden-xs">
+            <div class="container-fluid">
+                <ul class="list-group">
+
+                    <li class="list-group-item active">
+
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 col-xs-9">
+                                Page Name
+                            </div>
+                            <div class="col-lg-3 visible-lg">
+                                Title
+                            </div>
+                            <div class="col-md-3 hidden-sm hidden-xs">
+                                Created
+                            </div>
+                            <div class="col-xs-3">
+                            </div>
+                        </div>
+                    </li>
+
+                    <li ng-repeat="oldPage in model.oldPages" class="list-group-item">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 col-xs-9">
+                                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{oldPage._id}}/widget">
+                                    {{oldPage.name}}
+                                </a>
+                            </div>
+                            <div class="col-lg-3 visible-lg">
+                                {{oldPage.title}}
+                            </div>
+                            <div class="col-md-3 hidden-sm hidden-xs">
+                                {{oldPage.dateCreated | date}}
+                            </div>
+                            <div class="col-xs-3">
+                                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{oldPage._id}}">
+                                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-8">
 
 <div class="container-fluid">
     <label for="name">Name</label>
@@ -58,6 +107,9 @@
               id="description"></textarea>
 
     <a ng-click="model.deletePage(model.pageId)" class="btn btn-block btn-danger">Delete</a>
+</div>
+        </div>
+    </div>
 </div>
 
 
