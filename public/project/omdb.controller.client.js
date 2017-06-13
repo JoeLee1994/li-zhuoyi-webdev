@@ -3,7 +3,7 @@
  */
 (function () {
     angular
-        .module('Project', [])
+        .module('Project')
         .controller('omdbController', omdbController);
 
     function omdbController(omdbService) {
@@ -18,20 +18,20 @@
             omdbService
                 .searchMovieByImdbID(imdbID)
                 .then(renderMovieDetails);
+
+            function renderMovieDetails(response) {
+                model.movie = response.data;
+            }
         }
 
         function searchByTitle(title) {
             omdbService
                 .searchByTitle(title)
                 .then(renderMovies);
-        }
 
-        function renderMovies(response) {
-            model.movies = response.data.Search;
-        }
-
-        function renderMovieDetails(response) {
-            model.movie = response.data;
+            function renderMovies(response) {
+                model.movies = response.Search;
+            }
         }
     }
 })();

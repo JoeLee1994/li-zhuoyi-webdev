@@ -10,7 +10,7 @@
 
         var api = {
             searchMovieByImdbID:searchMovieByImdbID,
-            searchByTitle:searchMovieByImdbID
+            searchByTitle:searchByTitle
         };
         return api;
 
