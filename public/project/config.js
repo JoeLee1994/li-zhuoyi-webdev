@@ -12,8 +12,13 @@
                 templateUrl: 'home.html'
             })
             .when('/search', {
-                templateUrl: 'omdb.view.client.html',
+                templateUrl: 'omdb/omdb.view.client.html',
                 controller: 'omdbController',
+                controllerAs: 'model'
+            })
+            .when('/showtime', {
+                templateUrl: 'showtime/showtime.view.client.html',
+                controller: 'showtimeController',
                 controllerAs: 'model'
             })
     }

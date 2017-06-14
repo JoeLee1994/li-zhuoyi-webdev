@@ -1,0 +1,31 @@
+<div ng-controller="showtimeController as model"
+     class="container-fluid">
+    <h1>showtime API</h1>
+
+    <div class="row">
+
+        <div class="col-xs-4">
+
+    <h2>Search</h2>
+    <input ng-model="title" class="form-control"/>
+
+    <button ng-click="model.searchByTitle(title)" class="btn btn-primary btn-block">
+        Search
+    </button>
+
+    <h2>Results</h2>
+
+    <ul class="list-group">
+        <li ng-click="model.searchByMovieandLocation(movie.movie_Id, movie.location)" ng-repeat="movie in model.movies"
+            class="list-group-item">
+            <img ng-src="{{movie.Poster}}"/>
+            {{movie.Title}}
+            {{movie.movie_Id}}
+        </li>
+    </ul>
+</div>
+        <div class="col-xs-8">
+            <h2>{{model.movie}}</h2>
+        </div>
+    </div>
+</div>
