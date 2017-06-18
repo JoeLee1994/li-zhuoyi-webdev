@@ -10,12 +10,12 @@
 
         var api = {
             searchByMovieandLocation: searchByMovieandLocation,
-            searchByTitle: searchByTitle,
+            searchByTitle: searchByTitle
         };
         return api;
 
         function searchByMovieandLocation(movieId, location) {
-            var url = "https://api.internationalshowtimes.com/v4/showtimes?movie_id="+movieId+"&location="+location+"&distance=30";
+            var url = "https://api.internationalshowtimes.com/v4/?apikey=WOeF9mNfP1CyUU1tnF1eimGhfX1aQkup&showtimes?movie_id="+movieId+"&location="+location+"&distance=30";
             return $http
                 .get(url)
                 .then(function (response) {
@@ -24,7 +24,7 @@
         }
 
         function searchByTitle(title) {
-            var url = "https://api.internationalshowtimes.com/v4/movies?search_query=My%20First%20Lady&search_field="+title;
+            var url = "https://api.internationalshowtimes.com/v4/?apikey=WOeF9mNfP1CyUU1tnF1eimGhfX1aQkup&movies?search_query=My%20First%20Lady&search_field="+title;
             return $http
                 .get(url)
                 .then(function (response) {

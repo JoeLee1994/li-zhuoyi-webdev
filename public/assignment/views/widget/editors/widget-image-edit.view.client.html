@@ -3,8 +3,10 @@
 <input type="text"
        id="name"
        ng-model="model.widget.name"
+       ng-class="{submitted:model.submitted}"
        placeholder="Name"
-       class="form-control"/>
+       class="form-control" required/>
+<div ng-show="model.error" class="alert alert-danger">{{model.error}}</div>
 
 <label for="text">Text</label>
 <input type="text"
@@ -44,7 +46,7 @@
 
 
 <label>Photos from Flickr</label>
-<a class="btn btn-info btn-block" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widgetId}}/search">
+<a class="btn btn-info btn-block" href="#!/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widgetId}}/search">
     Search
 </a>
 

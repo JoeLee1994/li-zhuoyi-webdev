@@ -1,25 +1,38 @@
  <div  class="container-fluid">
         <h1>Login</h1>
 
-        <div ng-show="model.message" class="alert alert-info">{{model.message}}</div>
+        <div ng-show="model.error3" class="alert alert-info">{{model.error3}}</div>
 
         <label for="username">Username</label>
         <input ng-model="username"
+               autocorrect="off"
+               autocapitalize="off"
+               spellcheck="false"
                type="text"
+               ng-class="{submitted:model.submitted1}"
                id="username"
                class="form-control"
-               placeholder="Alice1994"/>
+               placeholder="Alice1994" required/>
+         <div ng-show="model.error1" class="alert alert-danger">{{model.error1}}</div>
 
         <label for="password">Password</label>
         <input ng-model="password"
                type="password"
+               ng-class="{submitted:model.submitted2}"
                id="password"
                class="form-control"
-               placeholder="asdf123"/>
+               placeholder="asdf123" required/>
+         <div ng-show="model.error2" class="alert alert-danger">{{model.error2}}</div>
 
         <a ng-click="model.login(username, password)"
            class="btn btn-primary btn-block">Login</a>
 
         <a class="btn btn-success btn-block"
            href="#!/register">Register</a>
+
+         <a href="/auth/facebook" class="btn btn-primary btn-block">
+                 <span class="fa fa-facebook"></span>
+                 Facebook
+         </a>
+
     </div>

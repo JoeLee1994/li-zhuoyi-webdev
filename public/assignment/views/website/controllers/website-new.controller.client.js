@@ -6,11 +6,11 @@
         .module('WebAppMaker')
         .controller('NewWebsiteController', NewWebsiteController);
 
-    function NewWebsiteController($routeParams, $location, websiteService) {
+    function NewWebsiteController($routeParams, $location, currentUser, websiteService) {
 
         var model = this;
 
-        model.userId = $routeParams['userId'];
+        model.userId = currentUser._id;
         model.createWebsite = createWebsite;
 
         function init() {
@@ -23,11 +23,16 @@
         init();
 
         function createWebsite(userId, website) {
+            if (website === null || website === '' || typeof website === 'undefined') {
+                model.error = "Name required!";
+                model.submitted = true;
+                return;
+            }
             //website.developerId = model.userId;
             websiteService
                 .createWebsite(userId, website)
                 .then(function () {
-                    $location.url('/user/' + model.userId + '/website');
+                    $location.url('/website');
                 });
         }
     }

@@ -6,10 +6,10 @@
         .module('WebAppMaker')
         .controller('EditPageController', EditPageController);
 
-    function EditPageController ($routeParams, $location, pageService) {
+    function EditPageController ($routeParams, $location, currentUser, pageService) {
         var model = this;
 
-        model.userId = $routeParams['userId'];
+        model.userId = currentUser._id;
         model.websiteId = $routeParams['websiteId'];
         model.pageId = $routeParams['pageId'];
 
@@ -37,15 +37,20 @@
             pageService
                 .deletePage(pageId)
                 .then(function (){
-                    $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
+                    $location.url('/website/' + model.websiteId + '/page');
                 });
         }
 
         function updatePage (pageId, page) {
+            if (page.name === null || page.name === '' || typeof page.name === 'undefined') {
+                model.error = "Name required!";
+                model.submitted = true;
+                return;
+            }
             pageService
                 .updatePage(pageId, page)
                 .then(function (){
-                    $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
+                    $location.url('/website/' + model.websiteId + '/page');
                 });
 
         }

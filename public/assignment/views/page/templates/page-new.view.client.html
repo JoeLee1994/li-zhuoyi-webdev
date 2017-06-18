@@ -3,27 +3,27 @@
         <div class="row navbar-header">
 
             <div class="col-md-1 col-sm-3 col-xs-4">
-                <a class="navbar-brand" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
+                <a class="navbar-brand" href="#!/website/{{model.websiteId}}/page">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
 
             <div class="col-md-2 hidden-sm hidden-xs">
-                <a class="navbar-brand" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
+                <a class="navbar-brand" href="#!/website/{{model.websiteId}}/page">
                     Pages
                 </a>
             </div>
 
             <div class="col-sm-1 hidden-xs">
                 <p class="navbar-text pull-right">
-                    <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/new" class="navbar-link">
+                    <a href="#!/website/{{model.websiteId}}/page/new" class="navbar-link">
                         <span class="glyphicon glyphicon-plus"></span>
                     </a>
                 </p>
             </div>
 
             <div class="col-xs-8">
-                <a class="navbar-brand" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/new">
+                <a class="navbar-brand" href="#!/website/{{model.websiteId}}/page/new">
                     New Page
                 </a>
                 <p class="navbar-text pull-right">
@@ -62,7 +62,7 @@
                     <li ng-repeat="page in model.pages" class="list-group-item">
                         <div class="row">
                             <div class="col-lg-3 col-md-6 col-xs-9">
-                                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">
+                                <a href="#!/website/{{model.websiteId}}/page/{{page._id}}/widget">
                                     {{page.name}}
                                 </a>
                             </div>
@@ -73,7 +73,7 @@
                                 {{page.dateCreated | date}}
                             </div>
                             <div class="col-xs-3">
-                                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
+                                <a href="#!/website/{{model.websiteId}}/page/{{page._id}}">
                                     <span class="glyphicon glyphicon-cog pull-right"></span>
                                 </a>
                             </div>
@@ -90,8 +90,10 @@
         <input class="form-control"
                type="text"
                ng-model="page.name"
+               ng-class="{submitted:model.submitted}"
                placeholder="facebook"
-               id="name"/>
+               id="name" required/>
+    <div ng-show="model.error" class="alert alert-danger">{{model.error}}</div>
 
         <label for="form-title">Title</label>
         <input class="form-control"

@@ -16,14 +16,14 @@
 
             <div class="col-sm-1 hidden-xs">
                 <p class="navbar-text pull-right">
-                    <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/new" class="navbar-link">
+                    <a href="#!/website/{{model.websiteId}}/page/new" class="navbar-link">
                         <span class="glyphicon glyphicon-plus"></span>
                     </a>
                 </p>
             </div>
 
             <div class="col-xs-8">
-                <a class="navbar-brand" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}">
+                <a class="navbar-brand" href="#!/website/{{model.websiteId}}/page/{{model.pageId}}">
                     Edit Page
                 </a>
                 <p class="navbar-text pull-right">
@@ -62,7 +62,7 @@
                     <li ng-repeat="oldPage in model.oldPages" class="list-group-item">
                         <div class="row">
                             <div class="col-lg-3 col-md-6 col-xs-9">
-                                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{oldPage._id}}/widget">
+                                <a href="#!/website/{{model.websiteId}}/page/{{oldPage._id}}/widget">
                                     {{oldPage.name}}
                                 </a>
                             </div>
@@ -73,7 +73,7 @@
                                 {{oldPage.dateCreated | date}}
                             </div>
                             <div class="col-xs-3">
-                                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{oldPage._id}}">
+                                <a href="#!/website/{{model.websiteId}}/page/{{oldPage._id}}">
                                     <span class="glyphicon glyphicon-cog pull-right"></span>
                                 </a>
                             </div>
@@ -90,7 +90,9 @@
     <input class="form-control"
            placeholder="Page Name"
            ng-model="model.page.name"
-           id="name"/>
+           ng-class="{submitted:model.submitted}"
+           id="name" required/>
+    <div ng-show="model.error" class="alert alert-danger">{{model.error}}</div>
 
     <label for="form-title">Title</label>
     <input type="text"

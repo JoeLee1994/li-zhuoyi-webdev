@@ -10,6 +10,7 @@ userModel.findUserById = findUserById;
 userModel.findAllUsers = findAllUsers;
 userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials = findUserByCredentials;
+userModel.findUserByFacebookId = findUserByFacebookId;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
 userModel.addWebsite = addWebsite;
@@ -38,6 +39,11 @@ function addWebsite(userId, websiteId) {
 }
 
 function createUser(user) {
+    if (user.roles) {
+        user.roles = user.roles.split(',');
+    } else {
+        user.roles = ['USER'];
+    }
     return userModel.create(user);
 }
 
@@ -54,12 +60,23 @@ function findUserByUsername(username) {
 }
 
 function findUserByCredentials(username, password) {
-    return userModel.findOne({username: username, password: password});
+    return userModel.findOne({
+        username: username
+        //password: password
+    });
+}
+
+function findUserByFacebookId(facebookId) {
+    return userModel
+        .findOne({'facebook.id': facebookId});
 }
 
 function updateUser(userId, newUser) {
     delete newUser.username;
     delete newUser.password;
+    if (typeof newUser.roles === 'string') {
+        newUser.roles = newUser.roles.split(',');
+    }
     return userModel.update({_id: userId}, {$set: newUser});
 }
 

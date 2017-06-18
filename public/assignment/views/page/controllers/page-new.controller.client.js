@@ -6,11 +6,11 @@
         .module('WebAppMaker')
         .controller('NewPageController', NewPageController);
 
-    function NewPageController ($routeParams, $location, pageService) {
+    function NewPageController ($routeParams, $location, currentUser, pageService) {
         
         var model = this;
 
-        model.userId = $routeParams['userId'];
+        model.userId = currentUser._id;
         model.websiteId = $routeParams['websiteId'];
         model.createPage = createPage;
 
@@ -24,11 +24,15 @@
         init();
 
         function createPage (websiteId, page) {
-            //page.websiteId = model.websiteId;
+            if (page === null || page === '' || typeof page === 'undefined') {
+                model.error = "Name required!";
+                model.submitted = true;
+                return;
+            }
             pageService
                 .createPage(websiteId, page)
                 .then(function () {
-                    $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
+                    $location.url('/website/' + model.websiteId + '/page');
                 });
         }
     }

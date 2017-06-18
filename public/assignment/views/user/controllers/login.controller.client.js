@@ -6,28 +6,50 @@
         .module('WebAppMaker')
         .controller('LoginController', LoginController);
 
-    function LoginController($location, userService) {
+    function LoginController($location, userService, $rootScope) {
 
         var model = this;
 
         model.login = login;
 
         function login(username, password) {
+            if (username === null || username === '' || typeof username === 'undefined') {
+                model.error1 = 'Username required!';
+                model.error2 = null;
+                model.error3 = null;
+                model.submitted1 = true;
+                return;
+            }
+            if (password === null || password === '' || typeof password === 'undefined') {
+                model.error1 = null;
+                model.error2 = 'Password required!';
+                model.error3 = null;
+                model.submitted2 = true;
+                return;
+            }
+            model.error1 = null;
+            model.error2 = null;
 
             userService
-                .findUserByCredentials(username, password)
-                .then(login, loginError);
+                .login(username, password)
+                .then(succeed, handleError);
 
-            function login(found) {
-                if (found) {
-                    $location.url('/user/' + found._id);
-                } else {
-                    model.message = "Sorry, " + username + " is not found. Please try again!";
-                }
+            function handleError() {
+                model.error1 = null;
+                model.error2 = null;
+                model.error3 = "Sorry, no matching username and password found. Please try again.";
             }
 
-            function loginError() {
-                model.message = "Sorry, not found. Please try again!";
+            function succeed (found) {
+                if (found !== null) {
+                    // model.message = "Welcome " + username;
+                    // $rootScope.currentUser = found;
+                    $location.url('/profile');
+                } else {
+                    model.error1 = null;
+                    model.error2 = null;
+                    model.error3 = "Sorry, no matching username and password found. Please try again.";
+                }
             }
         }
     }

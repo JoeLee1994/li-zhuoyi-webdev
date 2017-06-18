@@ -16,7 +16,7 @@
 
             <div class="col-sm-1 hidden-xs">
                 <p class="navbar-text pull-right">
-                    <a href="#!/user/{{model.userId}}/website/new" class="navbar-link" class="navbar-link">
+                    <a href="#!/website/new" class="navbar-link" class="navbar-link">
                         <span class="glyphicon glyphicon-plus"></span>
                     </a>
                 </p>
@@ -24,7 +24,7 @@
 
             <div class="col-xs-8">
                 <div class="navbar-header navbar-brand">
-                    <a id="title" href="">
+                    <a id="title" href="#!/website/{{model.websiteId}}">
                         Edit Website
                     </a>
                     <p class="pull-right">
@@ -73,7 +73,7 @@
                     <li ng-repeat="oldWebsite in model.oldWebsites" class="list-group-item">
                         <div class="row">
                             <div class="col-lg-3 col-md-6 col-xs-9">
-                                <a href="#!/user/{{model.userId}}/website/{{oldWebsite._id}}/page">
+                                <a href="#!/website/{{oldWebsite._id}}/page">
                                     {{oldWebsite.name}}
                                 </a>
                             </div>
@@ -84,7 +84,7 @@
                                 {{oldWebsite.dateCreated | date}}
                             </div>
                             <div class="col-xs-3">
-                                <a href="#!/user/{{model.userId}}/website/{{oldWebsite._id}}">
+                                <a href="#!/website/{{oldWebsite._id}}">
                                     <span class="glyphicon glyphicon-cog pull-right"></span>
                                 </a>
                             </div>
@@ -101,8 +101,11 @@
             <input type="text"
                    class="form-control"
                    ng-model="model.website.name"
+                   ng-class="{submitted:model.submitted}"
                    placeholder="facebook"
-                   id="name"/>
+                   id="name" required/>
+            <div ng-show="model.error" class="alert alert-danger">{{model.error}}</div>
+
 
             <label for="description">Description</label>
             <textarea id="description"

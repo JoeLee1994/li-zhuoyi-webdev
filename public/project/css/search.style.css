@@ -1,3 +1,9 @@
 input.form-control {
-    margin-bottom: 50px;
+    margin-bottom: 5px;
+}
+.col-xs-4 img {
+    width: 50px;
+}
+.col-xs-8 img {
+    width: 100px;
 }

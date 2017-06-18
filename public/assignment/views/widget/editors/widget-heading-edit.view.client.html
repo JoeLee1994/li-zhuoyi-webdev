@@ -3,8 +3,10 @@
 <input type="text"
        id="name"
        ng-model="model.widget.name"
+       ng-class="{submitted:model.submitted}"
        placeholder="Name"
-       class="form-control"/>
+       class="form-control" required/>
+<div ng-show="model.error" class="alert alert-danger">{{model.error}}</div>
 
 <label for="text">Text</label>
 <input type="text"
