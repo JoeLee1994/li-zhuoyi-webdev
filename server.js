@@ -3,16 +3,21 @@ var app = require('./express');
 var express = app.express;
 
 var bodyParser = require('body-parser');
-var passport      = require('passport');
 var cookieParser  = require('cookie-parser');
 var session       = require('express-session');
+var passport      = require('passport');
 
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
+app.use(session({
+    secret: 'this is the secret',
+    resave: true,
+    saveUninitialized: true
+}));
 app.use(cookieParser());
-app.use(session({ secret: process.env.SESSION_SECRET }));
 app.use(passport.initialize());
 app.use(passport.session());
 
