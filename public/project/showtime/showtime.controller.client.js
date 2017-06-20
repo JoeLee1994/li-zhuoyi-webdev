@@ -6,31 +6,36 @@
         .module('Project')
         .controller('showtimeController', showtimeController);
 
-    function showtimeController() {
+    function showtimeController(showtimeService) {
         var model = this;
 
-        model.searchByMovieandLocation = searchByMovieandLocation;
-        model.searchByTitle = searchByTitle;
 
+        model.searchCityByName = searchCityByName;
+        model.searchCinemaByCity = searchCinemaByCity;
 
-        function searchByMovieandLocation(movieId, location) {
+        function searchCityByName(name) {
             showtimeService
-                .searchByMovieandLocation(movieId, location)
-                .then(renderShowtime)
+                .searchCityByName(name)
+                .then(searchCinemaByCity);
+
         }
 
-        function renderShowtime(response) {
-            model.showtime = response;
-        }
+        // function renderCity(response) {
+        //     model.city = response;
+        // }
 
-        function searchByTitle(title) {
+        function searchCinemaByCity(id) {
             showtimeService
-                .searchByTitle(title)
-                .then(renderMovies);
-
-            function renderMovies(response) {
-                model.movies = response.Search;
-            }
+                .searchCinemaByCity(id)
+                .then(renderCinemaDetails);
         }
+
+        function renderCinemaDetails(response) {
+            model.cinemas = response.Search;
+        }
+
+
+
+
     }
 }());

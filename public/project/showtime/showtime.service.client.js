@@ -9,22 +9,24 @@
     function showtimeService($http) {
 
         var api = {
-            searchByMovieandLocation: searchByMovieandLocation,
-            searchByTitle: searchByTitle
+            searchCityByName : searchCityByName,
+            searchCinemaByCity: searchCinemaByCity
         };
         return api;
 
-        function searchByMovieandLocation(movieId, location) {
-            var url = "https://api.internationalshowtimes.com/v4/?apikey=WOeF9mNfP1CyUU1tnF1eimGhfX1aQkup&showtimes?movie_id="+movieId+"&location="+location+"&distance=30";
+        function searchCityByName(name) {
+            var url = "https://api.internationalshowtimes.com/v4/cities/"+name.replace(/\s+/g,"-")+"&apikey=WOeF9mNfP1CyUU1tnF1eimGhfX1aQkup";
             return $http
                 .get(url)
                 .then(function (response) {
+                    console.log(response.data);
                     return response.data;
-                });
+                })
         }
 
-        function searchByTitle(title) {
-            var url = "https://api.internationalshowtimes.com/v4/?apikey=WOeF9mNfP1CyUU1tnF1eimGhfX1aQkup&movies?search_query=My%20First%20Lady&search_field="+title;
+
+        function searchCinemaByCity(id) {
+            var url = "https://api.internationalshowtimes.com/v4/cinemas/?city_id="+id+"&apikey=WOeF9mNfP1CyUU1tnF1eimGhfX1aQkup";
             return $http
                 .get(url)
                 .then(function (response) {

@@ -1,0 +1,31 @@
+#environment{
+	background-color: #F2F2F2;
+}
+
+
+.recommendation{
+	padding:150px;
+	color:#4D4D4D；
+}
+
+
+.review{
+	padding:150px;
+	background-color: white;
+
+}
+#card{
+	padding:20px;
+	background-color: white;
+}
+#title{
+	color:#4D4D4D;
+}
+
+.jumbotron{
+	margin:0px;
+	padding:50px;
+}
+
+
+
