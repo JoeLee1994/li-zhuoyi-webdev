@@ -5,16 +5,15 @@
     <h2>Search</h2>
     <input ng-model="name" class="form-control"/>
 
-    <button ng-click="model.searchCinemaByCity(name)" class="btn btn-primary btn-block">
+    <button ng-click="model.searchCityByName(name)" class="btn btn-primary btn-block">
         Search
     </button>
 
     <ul class="list-group">
         <li ng-repeat="cinema in model.cinemas">
-            <h2>Result for "{{cinema.name}}"</h2>
-            <img ng-src="{{cinema.telephone}}"/>
+            <h2>Results</h2>
+            {{cinema.telephone}}
             {{cinema.website}}
-            {{cinema.address}}
         </li>
     </ul>
 </div>

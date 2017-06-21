@@ -15,12 +15,11 @@
         return api;
 
         function searchCityByName(name) {
-            var url = "https://api.internationalshowtimes.com/v4/cities/"+name.replace(/\s+/g,"-")+"&apikey=WOeF9mNfP1CyUU1tnF1eimGhfX1aQkup";
+            var url = "https://api.internationalshowtimes.com/v4/cities/"+name.replace(/\s+/g,"-")+"/?apikey=WOeF9mNfP1CyUU1tnF1eimGhfX1aQkup";
             return $http
                 .get(url)
                 .then(function (response) {
-                    console.log(response.data);
-                    return response.data;
+                    return response.data.city.id;
                 })
         }
 

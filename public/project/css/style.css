@@ -27,5 +27,14 @@
 	padding:50px;
 }
 
+.navbar-header .navbar-brand img{
+	width: 25px;
+	height: 25px;
+
+}
+
+.carousel-slide {
+	padding-top: 200px;
+}
 
 

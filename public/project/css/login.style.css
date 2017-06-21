@@ -1,0 +1,91 @@
+input.form-control, textarea.form-control {
+    margin-bottom: 10px;
+}
+
+body {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.navbar-header {
+    height: 60px;
+}
+
+/* no space -> AND */
+.row.navbar-header > .col-xs-8,
+.row.navbar-header > .col-sm-7.col-xs-8 {
+    padding-right: 0;
+}
+
+.navbar.navbar-default.navbar-fixed-top .navbar-header,
+.navbar.navbar-default.navbar-fixed-bottom .navbar-header,
+.row.navbar-text {
+    width: 100%;
+}
+
+.navbar-brand,
+.navbar-header.navbar-brand,
+.row a,
+.col-lg-3.col-md-6.col-xs-9,
+.col-lg-3.visible-lg,
+.col-md-3.hidden-sm.hidden-xs {
+    white-space: nowrap;
+}
+
+#title {
+    color: #ebeef0;
+}
+
+
+
+.navbar-default .navbar-brand,
+.navbar.navbar-default a,
+.navbar-default .navbar-link,
+.container-fluid > .navbar-header {
+    color: white;
+}
+
+.row .container-fluid {
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+    z-index: 2;
+    color: #fff;
+    background-color: #637a87;
+    border-color: #637a87;
+}
+
+
+.btn-facebook {
+    color: #fff;
+    background-color: #3b5998;
+    border-color: #3b5998;
+}
+
+.btn-facebook:hover, .btn-facebook:focus, .btn-facebook:active, .btn-facebook.active, .open>.dropdown-toggle.btn-facebook {
+    color: #fff;
+    background-color: #355088;
+    border-color: #355088;
+}
+
+a {
+    color: #00235f;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+#star-alliance {
+    padding-top: 5px;
+}
+
+.glyphicon {
+    padding-top: 7px;
+    color: #00235f;
+}
+

@@ -14,4 +14,4 @@ if(process.env.MLAB_USERNAME_WEBDEV) { // check if running remotely
 
 mongoose.connect(connectionString);
 
-require('./services/omdb.service.server');
+require('./services/user.service.server');
