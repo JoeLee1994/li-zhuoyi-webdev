@@ -11,7 +11,7 @@ var userSchema = mongoose.Schema({
 
     roles: [{type: String,
         default: 'USER',
-        enum: ['USER', 'ADMIN']}],
+        enum: ['USER', 'ADMIN', 'Publisher']}],
 
     facebook: {
         id:    String,

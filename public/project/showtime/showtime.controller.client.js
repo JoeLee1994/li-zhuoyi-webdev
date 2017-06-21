@@ -31,7 +31,7 @@
         }
 
         function renderCinemaDetails(response) {
-            model.cinemas = response.search;
+            model.cinema = response.cinemas;
         }
     }
 }());

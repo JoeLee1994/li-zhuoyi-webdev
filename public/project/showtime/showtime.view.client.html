@@ -10,8 +10,10 @@
     </button>
 
     <ul class="list-group">
-        <li ng-repeat="cinema in model.cinemas">
-            <h2>Results</h2>
+        <h2>Results</h2>
+        <li ng-repeat="cinema in model.cinema"
+            class="list-group-item">
+            {{cinema.name}}
             {{cinema.telephone}}
             {{cinema.website}}
         </li>
