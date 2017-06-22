@@ -37,4 +37,14 @@
 	padding-top: 200px;
 }
 
+input.form-control, textarea.form-control {
+	margin-bottom: 10px;
+}
+
+body {
+	padding-top: 60px;
+	padding-bottom: 60px;
+}
+
+
 

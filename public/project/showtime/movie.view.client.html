@@ -1,19 +1,19 @@
 <link href="../../project/css/city.style.css" rel="stylesheet"/>
-<div ng-controller="showtimeController as model"
+<div ng-controller="movieController as model"
      class="container-fluid">
     <h1>showtime API</h1>
 
     <h2>Search</h2>
     <input ng-model="name" class="form-control"/>
 
-    <button ng-click="model.searchCityByName(name)" class="btn btn-primary btn-block">
+    <button ng-click="model.searchCinemaByName(name)" class="btn btn-primary btn-block">
         Search
     </button>
 
     <div class="list-group">
-        <ul ng-repeat="cinema in model.cinema"
+        <ul ng-repeat="movie in model.movie"
             class="list-group-item">
-        <li ng-click="model.searchMovieByCinema({{cinema.slug}})">Cinema: {{cinema.name}}</li>
+            <li>Cinema: {{cinema.name}}</li>
             <span ng-click="" class="glyphicon glyphicon-heart-empty pull-right"></span>
             <li>Telephone: {{cinema.telephone}}</li>
             <li>Website: {{cinema.website}}</li>

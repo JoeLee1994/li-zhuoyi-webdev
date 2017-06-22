@@ -1,0 +1,9 @@
+input.form-control {
+    margin-bottom: 5px;
+}
+
+.list-group-item {
+    margin-top: 10px;
+    list-style-type:circle;
+}
+

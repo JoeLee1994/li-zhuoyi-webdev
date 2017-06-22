@@ -49,6 +49,7 @@ function isAdmin(req, res, next) {
     }
 }
 
+
 function findAllUsers(req, res) {
     userModel
         .findAllUsers()

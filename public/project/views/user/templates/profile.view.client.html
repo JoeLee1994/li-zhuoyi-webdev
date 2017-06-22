@@ -1,7 +1,8 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#!/profile">
+            <a class="navbar-brand" href="#!/">
+                <span class="glyphicon glyphicon-chevron-left"></span>
                 Profile
             </a>
             <p class="navbar-text pull-right">
@@ -58,7 +59,11 @@
         </form>
 
         <a class="btn btn-primary btn-block"
-           href="#!/website">Websites</a>
+           href="#!/website">Favorite Movies</a>
+        <a class="btn btn-primary btn-block"
+           href="#!/website">Favorite Cities</a>
+        <a class="btn btn-primary btn-block"
+           href="#!/website">Favorite Cinemas</a>
         <a class="btn btn-block btn-success"
            ng-click="model.updateUser(model.userId, model.user)">Update</a>
         <a class="btn btn-block btn-danger"

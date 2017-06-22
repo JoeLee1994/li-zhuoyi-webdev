@@ -23,10 +23,14 @@
                 <li><a href="#!/search">Movie</a></li>
                 <li><a href="#!/showtime">City</a></li>
                 <li><a href="#!/movies">Cinema</a></li>
+                <li ng-show="model.currentUser.roles.indexOf('ADMIN')>-1"><a href="#!/admin">Admin</a></li>
+                <li ng-show="model.currentUser.roles.indexOf('PUBLISHER')>-1"><a href="#!/publisher">Favorite Information</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <a href="#!/login" class="btn btn-default navbar-btn">Log in</a>
-                <a href="#!/register" class="btn btn-default navbar-btn">Sign up</a>
+                <li ng-show="!model.currentUser._id"><a href="#!/login">Sign in</a></li>
+                <li ng-show="!model.currentUser._id"><a href="#!/register">Sign up</a></li>
+                <li ng-show="model.currentUser._id"><a href="#!/profile">Profile</a></li>
+                <li ng-show="model.currentUser._id"><a ng-click="model.logout()">Logout</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

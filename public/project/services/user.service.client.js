@@ -22,12 +22,20 @@
             logout: logout,
             loggedin: loggedin,
             checkAdmin: checkAdmin,
+            checkPublisher: checkPublisher,
             register: register,
             updateUser: updateUser,
             deleteUser: deleteUser,
             unregister: unregister
         };
         return api;
+
+        function checkPublisher() {
+            return $http.get("/api/project/checkPublisher")
+                .then(function (response) {
+                    return response.data;
+                });
+        }
 
         function createUser (user) {
             var url = "/api/project/user";

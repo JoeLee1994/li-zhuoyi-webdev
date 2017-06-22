@@ -6,7 +6,7 @@
         .module('Project')
         .controller('omdbController', omdbController);
 
-    function omdbController(omdbService) {
+    function omdbController(omdbService, $location) {
 
         var model = this;
 
@@ -15,13 +15,7 @@
 
 
         function searchMovieByImdbID(imdbID) {
-            omdbService
-                .searchMovieByImdbID(imdbID)
-                .then(renderMovieDetails);
-
-            function renderMovieDetails(response) {
-                model.movie = response;
-            }
+            $location.url('/moviedetails/' + imdbID);
         }
 
         function searchByTitle(title) {

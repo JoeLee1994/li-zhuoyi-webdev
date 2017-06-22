@@ -12,6 +12,7 @@
 
         model.searchCityByName = searchCityByName;
         model.searchCinemaByCity = searchCinemaByCity;
+        model.searchMovieByCinema = searchMovieByCinema;
 
         function searchCityByName(name) {
             showtimeService
@@ -32,6 +33,15 @@
 
         function renderCinemaDetails(response) {
             model.cinema = response.cinemas;
+        }
+
+        function searchMovieByCinema(slug) {
+            showtimeService
+                .searchMovieByCinema(slug)
+                .then(renderMovieDetails);
+        }
+        function renderMovieDetails(response) {
+            model.movie = response.movies;
         }
     }
 }());

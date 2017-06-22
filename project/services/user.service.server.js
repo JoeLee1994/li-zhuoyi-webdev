@@ -3,6 +3,8 @@
  */
 var app = require('../../express');
 var userModel = require('../models/user/user.model.server');
+var movieModel = require('../models/movie/movie.model.server');
+var favoriteModel = require('../models/favorite/favorite.model.server');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require("bcrypt-nodejs");
@@ -25,11 +27,14 @@ app.get    ('/api/project/users', isAdmin, findAllUsers);
 app.get    ('/api/project/user', findUserByCredentials);
 app.post   ('/api/project/user', isAdmin, createUser);
 app.delete ('/api/project/user/:userId', isAdmin, deleteUser);
+app.get    ('/api/project/movie/', isPublisher, findAllMovies);
+app.get    ('/api/project/favorite', isPublisher, countFavoritesByUserId);
 app.put    ('/api/project/user/:userId', updateUser); // to be protected
 app.post   ('/api/project/login', passport.authenticate('local'), login);
 app.post   ('/api/project/logout', logout);
 app.get    ('/api/project/loggedin', loggedin);
 app.get    ('/api/project/checkAdmin', checkAdmin);
+app.get    ('/api/project/checkPublisher', checkPublisher);
 app.post   ('/api/project/register', register);
 app.post   ('/api/project/unregister', unregister);
 
@@ -41,9 +46,36 @@ app.get('/auth/facebook/callback',
         failureRedirect: '/project/index.html#!/login'
     }));
 
+function checkPublisher(req, res) {
+    res.send(req.isAuthenticated() && req.user.roles.indexOf('PUBLISHER') > -1 ? req.user : '0');
+}
+
+function findAllMovies(req, res) {
+    movieModel
+        .findAllUsers()
+        .then(function (movies) {
+            res.json(movies);
+        })
+}
+
+function countFavoritesByUserId(req, res) {
+    favoriteModel
+        .countFavoritesByUserId(req.params['userId'])
+        .then(function (count) {
+            res.json('{\"count\":'+count+'}')
+        })
+}
+
 function isAdmin(req, res, next) {
     if(req.isAuthenticated() && req.user.roles.indexOf('ADMIN') > -1) {
         next(); // continue to next middleware;
+    } else {
+        res.sendStatus(401);
+    }
+}
+function isPublisher(req, res, next) {
+    if (req.isAuthenticated() && req.user.roles.indexOf('PUBLISHER') > -1) {
+        next();
     } else {
         res.sendStatus(401);
     }

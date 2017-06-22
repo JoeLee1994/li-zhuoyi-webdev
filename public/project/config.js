@@ -26,6 +26,16 @@
                 controller: 'showtimeController',
                 controllerAs: 'model'
             })
+            .when('/movies', {
+                templateUrl: 'showtime/movie.view.client.html',
+                controller: 'movieController',
+                controllerAs: 'model'
+            })
+            .when('/moviedetails/:movieId', {
+                templateUrl: 'omdb/movie-details.view.client.html',
+                controller: 'movieDetailsController',
+                controllerAs: 'model'
+            })
             .when('/login', {
                 templateUrl: 'views/user/templates/login.view.client.html',
                 controller: 'LoginController',
@@ -60,6 +70,12 @@
                     currentUser: checkLoggedIn
                 }
             })
+            .when('/publisher', {
+                templateUrl: 'views/publisher/publisher.view.client.html',
+                resolve: {
+                    currentUser: checkPublisher
+                }
+            })
     }
     function checkLoggedIn(userService, $q, $location) {
         var deferred = $q.defer();
@@ -89,7 +105,20 @@
                     deferred.resolve(user);
                 }
             });
+        return deferred.promise;
+    }
 
+    function checkPublisher(userService, $q, $location) {
+        var deferred = $q.defer();
+        userService
+            .checkPublisher()
+            .then(function (user) {
+                if (user === '0'){
+                    deferred.reject();
+                    $location.url('/');
+                } else
+                    deferred.resolve(user);
+            });
         return deferred.promise;
     }
 
