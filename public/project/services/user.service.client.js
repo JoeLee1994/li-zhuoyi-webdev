@@ -26,9 +26,19 @@
             register: register,
             updateUser: updateUser,
             deleteUser: deleteUser,
-            unregister: unregister
+            unregister: unregister,
+            findAlllikedMovies: findAlllikedMovies
         };
         return api;
+
+        function findAlllikedMovies(userId) {
+            var url = "/api/project/user/" + userId + "/likedmovies";
+            return $http
+                .get(url)
+                .then(function (response) {
+                    return response.data;
+                })
+        }
 
         function checkPublisher() {
             return $http.get("/api/project/checkPublisher")

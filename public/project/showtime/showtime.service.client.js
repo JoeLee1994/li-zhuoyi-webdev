@@ -34,8 +34,8 @@
                 })
         }
 
-        function searchMovieByCinema(slug) {
-            var url = "https://api.internationalshowtimes.com/v4/movies/?cinema_slug="+slug+"&apikey=WOeF9mNfP1CyUU1tnF1eimGhfX1aQkup";
+        function searchMovieByCinema(id) {
+            var url = "https://api.internationalshowtimes.com/v4/movies/?cinema_id="+id+"&apikey=WOeF9mNfP1CyUU1tnF1eimGhfX1aQkup";
             return $http
                 .get(url)
                 .then(function (response) {

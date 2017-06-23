@@ -21,7 +21,9 @@ var userSchema = mongoose.Schema({
     email: String,
     phone: String,
     dateCreated: {type: Date, default: Date.now},
-    movies:[{type: mongoose.Schema.ObjectId, ref: "MovieModel"}]
+    likedmovies:[{type: mongoose.Schema.ObjectId, ref: "MovieModel"}],
+    likedcities:[{type: mongoose.Schema.ObjectId, ref: "CityModel"}],
+    likedcinemas:[{type: mongoose.Schema.ObjectId, ref: "CinemaModel"}]
 }, {collection: "user"});
 
 module.exports = userSchema;

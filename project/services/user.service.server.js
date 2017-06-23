@@ -26,8 +26,7 @@ app.get    ('/api/project/users', isAdmin, findAllUsers);
 app.get    ('/api/project/user', findUserByCredentials);
 app.post   ('/api/project/user', isAdmin, createUser);
 app.delete ('/api/project/user/:userId', isAdmin, deleteUser);
-app.get    ('/api/project/movie/', isPublisher, findAllMovies);
-app.get    ('/api/project/favorite', isPublisher, countFavoritesByUserId);
+app.get    ('/api/project/movie/', isPublisher, findAlllikedMovies);
 app.put    ('/api/project/user/:userId', updateUser); // to be protected
 app.post   ('/api/project/login', passport.authenticate('local'), login);
 app.post   ('/api/project/logout', logout);
@@ -36,6 +35,7 @@ app.get    ('/api/project/checkAdmin', checkAdmin);
 app.get    ('/api/project/checkPublisher', checkPublisher);
 app.post   ('/api/project/register', register);
 app.post   ('/api/project/unregister', unregister);
+app.get    ('/api/project/user/:userId', findAlllikedMovies);
 
 
 
@@ -46,25 +46,20 @@ app.get('/auth/facebook/callback',
         failureRedirect: '/project/index.html#!/login'
     }));
 
+
+function findAlllikedMovies(req, res) {
+    movieModel
+        .findAlllikedMovies()
+        .then(function (movies) {
+            res.json(movies);
+        })
+
+}
+
 function checkPublisher(req, res) {
     res.send(req.isAuthenticated() && req.user.roles.indexOf('PUBLISHER') > -1 ? req.user : '0');
 }
 
-function findAllMovies(req, res) {
-    movieModel
-        .findAllUsers()
-        .then(function (movies) {
-            res.json(movies);
-        })
-}
-
-function addFavorite(req, res, next) {
-    if(req.isAuthenticated() ? req.user : '0') {
-        next();
-    } else {
-
-    }
-}
 
 function countFavoritesByUserId(req, res) {
     favoriteModel

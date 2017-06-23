@@ -32,12 +32,13 @@
         }
 
         function renderCinemaDetails(response) {
-            model.cinema = response.cinemas;
+            model.cinema = response.cinemas
+            .then(searchMovieByCinema);
         }
 
-        function searchMovieByCinema(slug) {
+        function searchMovieByCinema(id) {
             showtimeService
-                .searchMovieByCinema(slug)
+                .searchMovieByCinema(id)
                 .then(renderMovieDetails);
         }
         function renderMovieDetails(response) {
