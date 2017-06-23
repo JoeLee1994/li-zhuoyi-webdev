@@ -4,7 +4,6 @@
 var app = require('../../express');
 var userModel = require('../models/user/user.model.server');
 var movieModel = require('../models/movie/movie.model.server');
-var favoriteModel = require('../models/favorite/favorite.model.server');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require("bcrypt-nodejs");
@@ -39,6 +38,7 @@ app.post   ('/api/project/register', register);
 app.post   ('/api/project/unregister', unregister);
 
 
+
 app.get ('/auth/facebook', passport.authenticate('facebook', { scope : ['public_profile', 'email'] }));
 app.get('/auth/facebook/callback',
     passport.authenticate('facebook', {
@@ -58,6 +58,14 @@ function findAllMovies(req, res) {
         })
 }
 
+function addFavorite(req, res, next) {
+    if(req.isAuthenticated() ? req.user : '0') {
+        next();
+    } else {
+
+    }
+}
+
 function countFavoritesByUserId(req, res) {
     favoriteModel
         .countFavoritesByUserId(req.params['userId'])
@@ -73,6 +81,7 @@ function isAdmin(req, res, next) {
         res.sendStatus(401);
     }
 }
+
 function isPublisher(req, res, next) {
     if (req.isAuthenticated() && req.user.roles.indexOf('PUBLISHER') > -1) {
         next();

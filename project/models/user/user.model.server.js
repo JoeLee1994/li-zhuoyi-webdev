@@ -13,30 +13,34 @@ userModel.findUserByCredentials = findUserByCredentials;
 userModel.findUserByFacebookId = findUserByFacebookId;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
-userModel.addWebsite = addWebsite;
-userModel.deleteWebsite = deleteWebsite;
+userModel.addFavorite = addFavorite;
+userModel.deleteFavorite = deleteFavorite;
+
 
 module.exports = userModel;
 
-function deleteWebsite(websiteId) {
+
+
+function addFavorite(userId, movieId) {
     return userModel
-        .find({websites:websiteId})
-        .then(function (users) {
-            var user = users[0];
-            var index = user.websites.indexOf(websiteId);
-            user.websites.splice(index, 1);
+        .findById(userId)
+        .then(function (user) {
+            user.movies.push(movieId);
             return user.save();
         });
 }
 
-function addWebsite(userId, websiteId) {
+function deleteFavorite(userId, movieId) {
     return userModel
-        .findById(userId)
-        .then(function (user) {
-            user.websites.push(websiteId);
+        .find({movies:movieId})
+        .then(function (users) {
+            var user = users[0];
+            var index = user.movies.indexOf(movieId);
+            user.movies.splice(index, 1);
             return user.save();
         });
 }
+
 
 function createUser(user) {
     if (user.roles) {

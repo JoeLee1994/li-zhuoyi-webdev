@@ -11,7 +11,7 @@
 
         var model = this;
 
-        model.imdbID = $routeParams['imdbID'];
+        model.imdbID = $routeParams['movieId'];
 
 
         function init() {
