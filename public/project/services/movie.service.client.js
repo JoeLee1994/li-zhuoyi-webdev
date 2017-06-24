@@ -29,7 +29,7 @@
 
 
         function findMovieByImdbID(imdbID) {
-            var url = "/api/project/movie/" +imdbID;
+            var url = "/api/project/moviesByImdbId/" +imdbID;
             return $http
                 .get(url)
                 .then(function (response) {

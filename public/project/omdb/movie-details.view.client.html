@@ -2,12 +2,12 @@
 
     <h1>{{model.movie.Title}}</h1>
 
-    <a ng-click="model.likemovie(movie.id)">
-        <span ng-if="!model.amIliking(movie.id)" class="glyphicon glyphicon-heart-empty pull-right"></span>
+    <a ng-click="model.likemovie(model.movie)">
+        <span ng-if="!model.amIliking" class="glyphicon glyphicon-heart-empty pull-right"></span>
     </a>
 
-    <a ng-click="model.unlikemovie(movie.id)">
-        <span ng-if="model.amIliking(movie.id)" class="glyphicon glyphicon-heart pull-right"></span>
+    <a ng-click="model.unlikemovie(model.movie)">
+        <span ng-if="model.amIliking" class="glyphicon glyphicon-heart pull-right"></span>
     </a>
 
     <!--<a ng-click="model.updateUser(model.userId, model.user)" class="navbar-link">-->

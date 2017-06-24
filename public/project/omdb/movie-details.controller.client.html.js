@@ -15,13 +15,15 @@
         model.userId = currentUser._id;
         model.likemovie = likemovie;
         model.unlikemovie = unlikemovie;
-        model.amIliking = amIliking;
+        model.amIliking = false;
+        model.queryLiking = queryLiking;
 
 
         function init() {
             omdbService
                 .searchMovieByImdbID(model.imdbID)
-                .then(renderMovieDetails);
+                .then(renderMovieDetails)
+                .then(queryLiking);
         }
         init();
 
@@ -29,14 +31,33 @@
                 model.movie = response;
         }
 
-        function amIliking(movieId) {
-            return currentUser.likedmovies.indexOf(movieId) > -1;
+        function queryLiking(movie) {
+            console.log(movie);
+            if(true){
+                model.amIliking = true;
+            } else {
+                model.amIliking = false;
+            }
         }
+
+        // function amIliking(movie) {
+        //     console.log(model.movie);
+        //     movieService
+        //         .findMovieByImdbID(movie.imdbID)
+        //         .then(function (movie) {
+        //             if(movie) {
+        //                 return currentUser.likedmovies.indexOf(movieId) > -1;
+        //             } else {
+        //                 return false;
+        //             }
+        //         })
+        // }
 
         function likemovie(movie) {
             console.log(movie);
+            model.amIliking = true;
             movieService
-                .findMovieByImdbID(model.imdbID)
+                .findMovieByImdbID(movie.imdbID)
                 .then(function (movie) {
                     if(movie) {
                         console.log(movie);
@@ -94,6 +115,7 @@
         }
 
         function unlikemovie(movieId) {
+            model.amIliking = false;
             var index = currentUser.likedmovies.indexOf(movieId);
             if (index !== -1) {
                 currentUser.likedmovies.splice(index, 1);
