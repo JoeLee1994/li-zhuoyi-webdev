@@ -4,7 +4,7 @@
     <h1>{{model.movie.Title}}</h1>
 
     <a ng-click="model.likemovie(movie._id)">
-        <span ng-if="!model.amIliking(movie._id)"  class="glyphicon glyphicon-heart-empty pull-right"></span>
+        <span ng-if="!model.amIliking(movie._id)" class="glyphicon glyphicon-heart-empty pull-right"></span>
     </a>
 
     <a ng-click="model.unlikemovie(movie._id)">

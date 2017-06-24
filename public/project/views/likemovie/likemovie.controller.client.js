@@ -36,8 +36,8 @@
                 });
         }
 
-        function amIliking(otherUserId) {
-            return currentUser.likedmovies.indexOf(otherUserId) > -1;
+        function amIliking(movieId) {
+            return currentUser.likedmovies.indexOf(movieId) > -1;
         }
 
         function likemovie(movieId) {

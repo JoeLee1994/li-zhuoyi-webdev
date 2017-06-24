@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var userSchema = require('./user.schema.server');
 var userModel = mongoose.model('UserModel', userSchema);
 
+
 userModel.createUser = createUser;
 userModel.findUserById = findUserById;
 userModel.findAllUsers = findAllUsers;
@@ -13,14 +14,13 @@ userModel.findUserByCredentials = findUserByCredentials;
 userModel.findUserByFacebookId = findUserByFacebookId;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
-
-
+userModel.findUserBylikedmovies = findUserBylikedmovies;
 
 module.exports = userModel;
 
-
-
-
+function findUserBylikedmovies(movieTitle) {
+    return userModel.find({likedmovies: movieTitle});
+}
 
 function createUser(user) {
     if (user.roles) {

@@ -36,6 +36,7 @@ app.get    ('/api/project/checkPublisher', checkPublisher);
 app.post   ('/api/project/register', register);
 app.post   ('/api/project/unregister', unregister);
 app.get    ('/api/project/user/:userId', findAlllikedMovies);
+app.get    ('/api/project/user', findUserBylikedmovies);
 
 
 
@@ -45,6 +46,14 @@ app.get('/auth/facebook/callback',
         successRedirect: '/project/index.html#!/profile',
         failureRedirect: '/project/index.html#!/login'
     }));
+
+function findUserBylikedmovies(req, res) {
+    movieModel
+        .findUserBylikedmovies()
+        .then(function (users) {
+            res.send(users);
+        })
+}
 
 
 function findAlllikedMovies(req, res) {
@@ -61,13 +70,6 @@ function checkPublisher(req, res) {
 }
 
 
-function countFavoritesByUserId(req, res) {
-    favoriteModel
-        .countFavoritesByUserId(req.params['userId'])
-        .then(function (count) {
-            res.json('{\"count\":'+count+'}')
-        })
-}
 
 function isAdmin(req, res, next) {
     if(req.isAuthenticated() && req.user.roles.indexOf('ADMIN') > -1) {

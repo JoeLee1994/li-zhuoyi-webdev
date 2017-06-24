@@ -16,41 +16,50 @@
                     currentUser: checkCurrentUser
                 }
             })
+
             .when('/search', {
                 templateUrl: 'omdb/omdb.view.client.html',
                 controller: 'omdbController',
                 controllerAs: 'model'
             })
+
             .when('/showtime', {
                 templateUrl: 'showtime/showtime.view.client.html',
                 controller: 'showtimeController',
                 controllerAs: 'model'
             })
-            .when('/movies', {
-                templateUrl: 'showtime/movie.view.client.html',
-                controller: 'movieController',
-                controllerAs: 'model'
-            })
+            // .when('/movies', {
+            //     templateUrl: 'showtime/movie.view.client.html',
+            //     controller: 'movieController',
+            //     controllerAs: 'model'
+            // })
             .when('/moviedetails/:movieId', {
                 templateUrl: 'omdb/movie-details.view.client.html',
                 controller: 'movieDetailsController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
             })
+
             .when('/moviesonshow/:cinemaId', {
                 templateUrl: 'showtime/movie.view.client.html',
                 controller: 'movieController',
                 controllerAs: 'model'
             })
+
             .when('/login', {
                 templateUrl: 'views/user/templates/login.view.client.html',
                 controller: 'LoginController',
                 controllerAs: 'model'
             })
+
             .when('/register', {
                 templateUrl: 'views/user/templates/register.view.client.html',
                 controller: 'RegisterController',
                 controllerAs: 'model'
             })
+
             .when('/admin', {
                 templateUrl: 'views/admin/templates/admin.view.client.html',
                 controller: 'adminUserController',
@@ -59,6 +68,7 @@
                     currentUser: checkAdmin
                 }
             })
+
             .when('/admin/user', {
                 templateUrl: 'views/admin/templates/admin-users.view.client.html',
                 controller: 'adminUserController',
@@ -67,6 +77,7 @@
                     currentUser: checkAdmin
                 }
             })
+
             .when('/profile', {
                 templateUrl: 'views/user/templates/profile.view.client.html',
                 controller: 'ProfileController',
@@ -75,6 +86,7 @@
                     currentUser: checkLoggedIn
                 }
             })
+
             .when('/publisher', {
                 templateUrl: 'views/publisher/publisher.view.client.html',
                 resolve: {
@@ -82,6 +94,7 @@
                 }
             })
     }
+
     function checkLoggedIn(userService, $q, $location) {
         var deferred = $q.defer();
         userService

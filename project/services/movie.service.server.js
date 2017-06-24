@@ -32,7 +32,6 @@ function findMovieById(req, res) {
 function updateMovie(req, res) {
     var newMovie = req.body;
     var movieId = req.params.movieId;
-
     movieModel
         .updateMovie(movieId, newMovie)
         .then(function () {
