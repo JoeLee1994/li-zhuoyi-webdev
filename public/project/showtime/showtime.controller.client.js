@@ -6,7 +6,7 @@
         .module('Project')
         .controller('showtimeController', showtimeController);
 
-    function showtimeController(showtimeService) {
+    function showtimeController(showtimeService, $location) {
         var model = this;
 
 
@@ -32,17 +32,15 @@
         }
 
         function renderCinemaDetails(response) {
-            model.cinema = response.cinemas
-            .then(searchMovieByCinema);
+            model.cinema = response.cinemas;
         }
 
         function searchMovieByCinema(id) {
-            showtimeService
-                .searchMovieByCinema(id)
-                .then(renderMovieDetails);
+            $location.url('/moviesonshow/'+id);
         }
-        function renderMovieDetails(response) {
-            model.movie = response.movies;
-        }
+
+        // function renderMovieDetails(response) {
+        //     model.movie = response.movies;
+        // }
     }
 }());

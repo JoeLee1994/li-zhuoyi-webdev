@@ -36,6 +36,11 @@
                 controller: 'movieDetailsController',
                 controllerAs: 'model'
             })
+            .when('/moviesonshow/:cinemaId', {
+                templateUrl: 'showtime/movie.view.client.html',
+                controller: 'movieController',
+                controllerAs: 'model'
+            })
             .when('/login', {
                 templateUrl: 'views/user/templates/login.view.client.html',
                 controller: 'LoginController',

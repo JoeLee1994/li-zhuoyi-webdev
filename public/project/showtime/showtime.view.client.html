@@ -13,7 +13,7 @@
     <div class="list-group">
         <ul ng-repeat="cinema in model.cinema"
             class="list-group-item">
-        <li ng-click="model.searchMovieByCinema({{cinema.slug}})">Cinema: {{cinema.name}}</li>
+        <li ng-click="model.searchMovieByCinema(cinema.id)">Cinema: {{cinema.name}}</li>
             <span ng-click="" class="glyphicon glyphicon-heart-empty pull-right"></span>
             <li>Telephone: {{cinema.telephone}}</li>
             <li>Website: {{cinema.website}}</li>
