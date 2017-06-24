@@ -33,27 +33,64 @@
             return currentUser.likedmovies.indexOf(movieId) > -1;
         }
 
-        function likemovie(movieId) {
-            var index = currentUser.likedmovies.indexOf(movieId);
-            if(index === -1) {
-                currentUser.likedmovies.push(movieId);
-                userService
-                    .updateUser(currentUser._id, currentUser)
-                    .then(function () {
-                        movieService
-                            .findMovieById(movieId)
-                            .then(function (movie) {
-                                var index1 = movie.likedbyuser.indexOf(currentUser._id);
-                                if (index1 === -1) {
-                                    console.log(movie.likedbyuser);
-                                    movie.likedbyuser.push(currentUser._id);
-                                    console.log(movie.likedbyuser);
+        function likemovie(movie) {
+            console.log(movie);
+            movieService
+                .findMovieByImdbID(model.imdbID)
+                .then(function (movie) {
+                    if(movie) {
+                        console.log(movie);
+                        var index = currentUser.likedmovies.indexOf(movie.Id);
+                        if(index === -1) {
+                            currentUser.likedmovies.push(movieId);
+                            console.log(currentUser.likedmovies);
+                            console.log(movieId);
+                            userService
+                                .updateUser(currentUser._id, currentUser)
+                                .then(function () {
                                     movieService
-                                        .updateMovie(movieId, movie);
+                                        .findMovieById(movieId)
+                                        .then(function (movie) {
+                                            var index1 = movie.likedbyuser.indexOf(currentUser._id);
+                                            if (index1 === -1) {
+                                                console.log(movie.likedbyuser);
+                                                movie.likedbyuser.push(currentUser._id);
+                                                console.log(movie.likedbyuser);
+                                                movieService
+                                                    .updateMovie(movieId, movie);
+                                            }
+                                        });
+                                });
+                        }
+                    } else {
+                        movieService
+                            .createMovie(movie)
+                            .then(function (movie) {
+                                var index = currentUser.likedmovies.indexOf(movieId);
+                                if(index === -1) {
+                                    currentUser.likedmovies.push(movieId);
+                                    console.log(currentUser.likedmovies);
+                                    console.log(movieId);
+                                    userService
+                                        .updateUser(currentUser._id, currentUser)
+                                        .then(function () {
+                                            movieService
+                                                .findMovieById(movieId)
+                                                .then(function (movie) {
+                                                    var index1 = movie.likedbyuser.indexOf(currentUser._id);
+                                                    if (index1 === -1) {
+                                                        console.log(movie.likedbyuser);
+                                                        movie.likedbyuser.push(currentUser._id);
+                                                        console.log(movie.likedbyuser);
+                                                        movieService
+                                                            .updateMovie(movieId, movie);
+                                                    }
+                                                });
+                                        });
                                 }
-                            });
-                    });
-            }
+                            })
+                    }
+                })
         }
 
         function unlikemovie(movieId) {

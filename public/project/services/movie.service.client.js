@@ -12,9 +12,31 @@
         var api = {
             findMovieById: findMovieById,
             findAlllikedMovies: findAlllikedMovies,
-            updateMovie: updateMovie
+            updateMovie: updateMovie,
+            findMovieByImdbID: findMovieByImdbID,
+            createMovie: createMovie
         };
         return api;
+
+        function createMovie(movie) {
+            var url = "/api/project/movie";
+            return $http
+                .post(url, movie)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+
+        function findMovieByImdbID(imdbID) {
+            var url = "/api/project/movie/" +imdbID;
+            return $http
+                .get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+
+        }
 
         function findMovieById(movieId) {
             var url = "/api/project/movie/" + movieId;

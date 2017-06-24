@@ -1,14 +1,13 @@
-<div ng-controller="movieDetailsController as model"
-     class="container-fluid">
+<div class="container-fluid">
 
     <h1>{{model.movie.Title}}</h1>
 
-    <a ng-click="model.likemovie(movie._id)">
-        <span ng-if="!model.amIliking(movie._id)" class="glyphicon glyphicon-heart-empty pull-right"></span>
+    <a ng-click="model.likemovie(movie.id)">
+        <span ng-if="!model.amIliking(movie.id)" class="glyphicon glyphicon-heart-empty pull-right"></span>
     </a>
 
-    <a ng-click="model.unlikemovie(movie._id)">
-        <span ng-if="model.amIliking(movie._id)" class="glyphicon glyphicon-heart pull-right"></span>
+    <a ng-click="model.unlikemovie(movie.id)">
+        <span ng-if="model.amIliking(movie.id)" class="glyphicon glyphicon-heart pull-right"></span>
     </a>
 
     <!--<a ng-click="model.updateUser(model.userId, model.user)" class="navbar-link">-->
