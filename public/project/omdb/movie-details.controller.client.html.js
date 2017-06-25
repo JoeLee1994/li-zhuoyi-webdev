@@ -28,13 +28,12 @@
         init();
 
         function renderMovieDetails(response) {
-                model.movie = response;
+              return model.movie = response;
         }
 
         function queryLiking(movie) {
-            console.log(movie);
-            if(true){
-                model.amIliking = true;
+            if(currentUser ){
+                return;
             } else {
                 model.amIliking = false;
             }
@@ -55,85 +54,88 @@
 
         function likemovie(movie) {
             console.log(movie);
-            model.amIliking = true;
-            movieService
-                .findMovieByImdbID(movie.imdbID)
-                .then(function (movie) {
-                    if(movie) {
-                        console.log(movie);
-                        var index = currentUser.likedmovies.indexOf(movie.Id);
-                        if(index === -1) {
-                            currentUser.likedmovies.push(movieId);
-                            console.log(currentUser.likedmovies);
-                            console.log(movieId);
-                            userService
-                                .updateUser(currentUser._id, currentUser)
-                                .then(function () {
-                                    movieService
-                                        .findMovieById(movieId)
-                                        .then(function (movie) {
-                                            var index1 = movie.likedbyuser.indexOf(currentUser._id);
-                                            if (index1 === -1) {
-                                                console.log(movie.likedbyuser);
-                                                movie.likedbyuser.push(currentUser._id);
-                                                console.log(movie.likedbyuser);
-                                                movieService
-                                                    .updateMovie(movieId, movie);
-                                            }
-                                        });
-                                });
-                        }
-                    } else {
-                        movieService
-                            .createMovie(movie)
-                            .then(function (movie) {
-                                var index = currentUser.likedmovies.indexOf(movieId);
-                                if(index === -1) {
-                                    currentUser.likedmovies.push(movieId);
+            if (!currentUser._id) {
+                alert("You have not logged in");
+                return;
+            } else {
+                model.amIliking = true;
+                console.log(movie);
+                movieService
+                    .findMovieByImdbID(movie.imdbID)
+                    .then(function (foundmovie) {
+                        console.log(foundmovie);
+                        if (foundmovie) {
+                            var index = currentUser.likedmovies.indexOf(foundmovie._id);
+                            if (index === -1) {
+                                currentUser.likedmovies.push(foundmovie._id);
+                                console.log(currentUser.likedmovies);
+                                console.log(foundmovie._id);
+                                userService
+                                    .updateUser(currentUser._id, currentUser)
+                                    .then(function () {
+                                        movieService
+                                            .findMovieById(foundmovie._id)
+                                        // .then(function (movie) {
+                                        //     var index1 = movie.likedbyuser.indexOf(currentUser._id);
+                                        //     if (index1 === -1) {
+                                        //         console.log(movie.likedbyuser);
+                                        //         movie.likedbyuser.push(currentUser._id);
+                                        //         console.log(movie.likedbyuser);
+                                        //         movieService
+                                        //             .updateMovie(movie._id, movie);
+                                        //     }
+                                        // });
+                                    });
+                            }
+                        } else {
+                            movieService
+                                .createMovie(movie)
+                                .then(function (createdmovie) {
+                                    currentUser.likedmovies.push(createdmovie._id);
                                     console.log(currentUser.likedmovies);
-                                    console.log(movieId);
+                                    console.log(createdmovie._id);
                                     userService
                                         .updateUser(currentUser._id, currentUser)
-                                        .then(function () {
-                                            movieService
-                                                .findMovieById(movieId)
-                                                .then(function (movie) {
-                                                    var index1 = movie.likedbyuser.indexOf(currentUser._id);
-                                                    if (index1 === -1) {
-                                                        console.log(movie.likedbyuser);
-                                                        movie.likedbyuser.push(currentUser._id);
-                                                        console.log(movie.likedbyuser);
-                                                        movieService
-                                                            .updateMovie(movieId, movie);
-                                                    }
-                                                });
-                                        });
-                                }
-                            })
-                    }
-                })
+                                    // .then(function () {
+                                    //     movieService
+                                    //         .findMovieById(movie.movieId)
+                                    //         .then(function (movie) {
+                                    //             var index1 = movie.likedbyuser.indexOf(currentUser._id);
+                                    //             if (index1 === -1) {
+                                    //                 console.log(movie.likedbyuser);
+                                    //                 movie.likedbyuser.push(currentUser._id);
+                                    //                 console.log(movie.likedbyuser);
+                                    //                 movieService
+                                    //                     .updateMovie(movie.movieId, movie);
+                                    //             }
+                                    //         });
+                                    // });
+                                })
+                        }
+                    })
+            }
         }
 
-        function unlikemovie(movieId) {
+        function unlikemovie(movie) {
             model.amIliking = false;
-            var index = currentUser.likedmovies.indexOf(movieId);
+            var index = currentUser.likedmovies.indexOf(movie._id);
             if (index !== -1) {
                 currentUser.likedmovies.splice(index, 1);
                 userService
                     .updateUser(currentUser._id, currentUser)
-                    .then(function () {
-                        movieService
-                            .findMovieById(movieId)
-                            .then(function (movie) {
-                                var index1 = movie.likedbyuser.indexOf(currentUser._id);
-                                if (index1 !== 1) {
-                                    movie.likedbyuser.splice(index1, 1);
-                                    console.log(movie.likedbyuser);
-                                    movieService
-                                        .updateMovie(movieId, movie);
-                                }
-                            });
-                    });
+                    // .then(function () {
+                    //     movieService
+                    //         .findMovieById(movie._id)
+                    //         .then(function (movie) {
+                    //             var index1 = movie.likedbyuser.indexOf(currentUser._id);
+                    //             if (index1 !== 1) {
+                    //                 movie.likedbyuser.splice(index1, 1);
+                    //                 console.log(movie.likedbyuser);
+                    //                 movieService
+                    //                     .updateMovie(movie._id, movie);
+                    //             }
+                    //         });
+                    // });
             }
         }
     }

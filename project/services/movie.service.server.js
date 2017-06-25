@@ -16,7 +16,8 @@ function createMovie(req, res) {
     movieModel
         .createMovie(movie)
         .then(function (movie) {
-            res.json(movie);
+            console.log(movie)
+            res.send(movie);
         }, function (err) {
             res.send(err);
         });
@@ -27,7 +28,7 @@ function findMovieByImdbID(req, res) {
     movieModel
         .findMovieByImdbID(movieimdbID)
         .then(function (movie) {
-            res.json(movie);
+            res.send(movie);
         })
 }
 
@@ -36,7 +37,7 @@ function findAlllikedMovies(req, res) {
     movieModel
         .findAlllikedMovies()
         .then(function (movies) {
-            res.json(movies);
+            res.send(movies);
         })
 }
 
@@ -45,7 +46,7 @@ function findMovieById(req, res) {
     movieModel
         .findMovieById(movieId)
         .then(function (movie) {
-            res.json(movie);
+            res.send(movie);
         }, function (err) {
             res.send(err);
         });
