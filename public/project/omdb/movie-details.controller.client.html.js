@@ -31,9 +31,8 @@
               return model.movie = response;
         }
 
-        function queryLiking(movie) {
-            if(currentUser ){
-                return;
+        function queryLiking() {
+            if(currentUser){
             } else {
                 model.amIliking = false;
             }
