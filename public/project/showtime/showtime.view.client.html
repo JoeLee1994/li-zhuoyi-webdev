@@ -1,6 +1,5 @@
 <link href="../../project/css/city.style.css" rel="stylesheet"/>
-<div ng-controller="showtimeController as model"
-     class="container-fluid">
+<div class="container-fluid">
     <h1>showtime API</h1>
 
     <h2>Search</h2>
@@ -11,10 +10,18 @@
     </button>
 
     <div class="list-group">
+        <h2>Cinemas in (name)</h2>
+        <a ng-click="model.likecity(model.city)">
+            <span ng-if="!model.amIliking" class="glyphicon glyphicon-heart-empty pull-right"></span>
+        </a>
+        <a ng-click="model.unlikecity(model.city)">
+            <span ng-if="model.amIliking" class="glyphicon glyphicon-heart pull-right"></span>
+        </a>
         <ul ng-repeat="cinema in model.cinema"
             class="list-group-item">
-        <li ng-click="model.searchMovieByCinema(cinema.id)">Cinema: {{cinema.name}}</li>
-            <span ng-click="" class="glyphicon glyphicon-heart-empty pull-right"></span>
+        <li ng-click="model.searchMovieByCinema(cinema.id)">
+            Cinema: {{cinema.name}}
+        </li>
             <li>Telephone: {{cinema.telephone}}</li>
             <li>Website: {{cinema.website}}</li>
         </ul>

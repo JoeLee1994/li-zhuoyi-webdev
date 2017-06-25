@@ -13,9 +13,10 @@
 
         model.imdbID = $routeParams['movieId'];
         model.userId = currentUser._id;
+        model.amIliking = false;
+
         model.likemovie = likemovie;
         model.unlikemovie = unlikemovie;
-        model.amIliking = false;
         model.queryLiking = queryLiking;
 
 
@@ -31,10 +32,27 @@
               return model.movie = response;
         }
 
-        function queryLiking() {
+        function queryLiking(response) {
             if(currentUser){
+                movieService.findMovieByImdbID(response.imdbID)
+                    .then(function(found){
+                        if(found._id){
+                            var index = currentUser.likedmovies.indexOf(found._id);
+                            if(index > -1){
+                                model.amIliking = true;
+                                return;
+                            }else{
+                                model.amIliking = false;
+                                return;
+                            }
+                        }else{
+                            model.amIliking = false;
+                            return;
+                        }
+                    })
             } else {
                 model.amIliking = false;
+                return;
             }
         }
 
@@ -117,11 +135,19 @@
 
         function unlikemovie(movie) {
             model.amIliking = false;
-            var index = currentUser.likedmovies.indexOf(movie._id);
-            if (index !== -1) {
-                currentUser.likedmovies.splice(index, 1);
-                userService
-                    .updateUser(currentUser._id, currentUser)
+            movieService
+                .findMovieByImdbID(movie.imdbID)
+                .then(function (foundmovie) {
+                console.log(foundmovie._id);
+                console.log(currentUser);
+                var index = currentUser.likedmovies.indexOf(foundmovie._id);
+                if (index !== -1) {
+                    currentUser.likedmovies.splice(index, 1);
+                    userService
+                        .updateUser(currentUser._id, currentUser)
+                }
+            })
+
                     // .then(function () {
                     //     movieService
                     //         .findMovieById(movie._id)
@@ -137,5 +163,4 @@
                     // });
             }
         }
-    }
 })();

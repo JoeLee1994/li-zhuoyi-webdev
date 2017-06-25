@@ -1,11 +1,18 @@
 <link href="../../project/css/city.style.css" rel="stylesheet"/>
-<div ng-controller="movieController as model"
-     class="container-fluid">
+<div class="container-fluid">
 
     <div class="list-group">
+        <li>Cinema:{{model.cinema.name}}</li>
+        <a ng-click="model.likecinema(model.cinema)">
+            <span ng-if="!model.amIliking" class="glyphicon glyphicon-heart-empty pull-right"></span>
+        </a>
+
+        <a ng-click="model.unlikecinema(model.cinema)">
+            <span ng-if="model.amIliking" class="glyphicon glyphicon-heart pull-right"></span>
+        </a>
         <ul ng-repeat="movie in model.movie"
             class="list-group-item">
-            <li>Cinema: {{movie.title}}</li>
+            <li>{{movie.title}}</li>
             <img ng-src="{{movie.poster_image_thumbnail}}"/>
         </ul>
     </div>

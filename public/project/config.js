@@ -26,7 +26,10 @@
             .when('/showtime', {
                 templateUrl: 'showtime/showtime.view.client.html',
                 controller: 'showtimeController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
             })
             // .when('/movies', {
             //     templateUrl: 'showtime/movie.view.client.html',

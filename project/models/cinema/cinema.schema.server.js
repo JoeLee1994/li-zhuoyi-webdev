@@ -4,10 +4,10 @@
 var mongoose = require('mongoose');
 
 var cinemaSchema = mongoose.Schema({
+    id: {type: String, unique: true},
     name: String,
     telephone: String,
-    website: String,
-    likedbyuser: {type: mongoose.Schema.Types.ObjectId, ref: "UserModel"}
+    website: String
 },{collection: "cinema"});
 
 module.exports = cinemaSchema;

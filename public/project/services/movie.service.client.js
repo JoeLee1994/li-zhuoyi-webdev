@@ -8,7 +8,6 @@
 
     function movieService($http) {
 
-
         var api = {
             findMovieById: findMovieById,
             findAlllikedMovies: findAlllikedMovies,
