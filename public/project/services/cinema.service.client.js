@@ -15,7 +15,8 @@
             findCinemaById: findCinemaById,
             findAlllikedCinemas: findAlllikedCinemas,
             findCinemaByOwnID: findCinemaByOwnID,
-            createCinema: createCinema
+            createCinema: createCinema,
+            searchCinemaByIdFromAPI: searchCinemaByIdFromAPI
         };
         return api;
 
@@ -54,6 +55,14 @@
                     return response.data;
                 });
         }
-    }
 
+        function searchCinemaByIdFromAPI(id) {
+            var url = "https://api.internationalshowtimes.com/v4/cinemas/" + id + "/?apikey=WOeF9mNfP1CyUU1tnF1eimGhfX1aQkup";
+            return $http
+                .get(url)
+                .then(function (response) {
+                    return response.data;
+                })
+        }
+    }
 })();

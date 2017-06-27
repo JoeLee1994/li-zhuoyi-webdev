@@ -24,11 +24,11 @@
             showtimeService
                 .searchCityByName(name)
                 .then(function (foundcity) {
+                    queryLiking(foundcity.id)
                     model.city = foundcity;
                     return foundcity;
                 })
                 .then(searchCinemaByCity);
-
         }
 
         // function renderCity(response) {
@@ -49,17 +49,17 @@
             $location.url('/moviesonshow/' + id);
         }
 
-        function init() {
-            cityService
-                .findCityByOwnID(model.id)
-                .then(queryLiking)
-        }
-        init();
+        // function init() {
+        //     cityService
+        //         .findCityByOwnID(model.id)
+        //         .then(queryLiking)
+        // }
+        // init();
 
         function queryLiking(response) {
             if (currentUser) {
                 cityService
-                    .findCityByOwnID(response.id)
+                    .findCityByOwnID(response)
                     .then(function (found) {
                         if (found._id) {
                             var index = currentUser.likedcities.indexOf(found._id);

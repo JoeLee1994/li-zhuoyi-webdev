@@ -2,7 +2,12 @@
 <div class="container-fluid">
 
     <div class="list-group">
-        <li>Cinema:{{model.cinema.name}}</li>
+        <li>Cinema: {{model.cinema.name}}</li>
+        <li>Telephone: {{model.cinema.telephone}}</li>
+        <li>Website：<a>{{model.cinema.website}}</a></li>
+        <li>Address: {{model.cinema.location.address.display_text}}</li>
+
+
         <a ng-click="model.likecinema(model.cinema)">
             <span ng-if="!model.amIliking" class="glyphicon glyphicon-heart-empty pull-right"></span>
         </a>

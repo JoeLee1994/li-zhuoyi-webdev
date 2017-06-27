@@ -15,7 +15,7 @@
 
         model.likecinema = likecinema;
         model.unlikecinema = unlikecinema;
-        model.searchMovieByCinema = searchMovieByCinema;
+        // model.searchMovieByCinema = searchMovieByCinema;
         model.queryLiking = queryLiking;
         //
         // model.searchCinemaByName = searchCinemaByName;
@@ -29,9 +29,13 @@
 
         
         function init() {
-            movieService
-                .searchMovieByCinema(model.id)
-                .findCinemaByOwnID(model.id)
+            searchMovieByCinema(model.id)
+            cinemaService
+                .searchCinemaByIdFromAPI(model.id)
+                .then(function (foundcinema) {
+                    model.cinema = foundcinema.cinema;
+                    return foundcinema;
+                })
                 .then(queryLiking);
         }
         init();
@@ -48,6 +52,7 @@
         }
 
         function queryLiking(response) {
+            console.log(response);
             if(currentUser){
                 cinemaService
                     .findCinemaByOwnID(response.id)
