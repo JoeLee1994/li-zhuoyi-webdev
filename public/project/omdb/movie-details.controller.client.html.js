@@ -89,20 +89,20 @@
                                 console.log(foundmovie._id);
                                 userService
                                     .updateUser(currentUser._id, currentUser)
-                                    .then(function () {
-                                        movieService
-                                            .findMovieById(foundmovie._id)
-                                        // .then(function (movie) {
-                                        //     var index1 = movie.likedbyuser.indexOf(currentUser._id);
-                                        //     if (index1 === -1) {
-                                        //         console.log(movie.likedbyuser);
-                                        //         movie.likedbyuser.push(currentUser._id);
-                                        //         console.log(movie.likedbyuser);
-                                        //         movieService
-                                        //             .updateMovie(movie._id, movie);
-                                        //     }
-                                        // });
-                                    });
+                                    // .then(function () {
+                                    //     movieService
+                                    //         .findMovieById(foundmovie._id)
+                                    //     // .then(function (movie) {
+                                    //     //     var index1 = movie.likedbyuser.indexOf(currentUser._id);
+                                    //     //     if (index1 === -1) {
+                                    //     //         console.log(movie.likedbyuser);
+                                    //     //         movie.likedbyuser.push(currentUser._id);
+                                    //     //         console.log(movie.likedbyuser);
+                                    //     //         movieService
+                                    //     //             .updateMovie(movie._id, movie);
+                                    //     //     }
+                                    //     // });
+                                    // });
                             }
                         } else {
                             movieService

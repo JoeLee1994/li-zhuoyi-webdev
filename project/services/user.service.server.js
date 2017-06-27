@@ -37,6 +37,9 @@ app.post   ('/api/project/register', register);
 app.post   ('/api/project/unregister', unregister);
 app.get    ('/api/project/user/:userId', findAlllikedMovies);
 app.get    ('/api/project/user', findUserBylikedmovies);
+app.get    ('/api/project/search/user/:keyword', searchByUsername);
+app.get    ('/api/project/user/:userId/followings', findAllFollowings);
+app.get    ('/api/project/user/:userId/befollowedbys', findAllbefollowedbys);
 
 
 
@@ -46,6 +49,53 @@ app.get('/auth/facebook/callback',
         successRedirect: '/project/index.html#!/profile',
         failureRedirect: '/project/index.html#!/login'
     }));
+
+function findAllFollowings(req, res) {
+    var userId = req.params.userId;
+    userModel
+        .findUserById(userId)
+        .then(function (user) {
+            return userModel
+                .findAllFollowings(user.following);
+        }, function (err) {
+            res.send(err);
+        })
+        .then(function (users) {
+            res.json(users);
+        });
+}
+
+function findAllbefollowedbys(req, res) {
+    var userId = req.params.userId;
+    userModel
+        .findUserById(userId)
+        .then(function (user) {
+            return userModel
+                .findAllbefollowedbys(user.befollowedby);
+        }, function (err) {
+            res.send(err);
+        })
+        .then(function (users) {
+            res.json(users);
+        });
+}
+
+function searchByUsername(req, res) {
+    var keyword = req.params['keyword'];
+    userModel
+        .searchByUsername(keyword)
+        .then(
+            function (result) {
+                if (result) {
+                    res.json(result);
+                } else {
+                    res.status(402).send("No matched result in users.");
+                }
+            }, function (err) {
+                res.status(404).send(err);
+            });
+}
+
 
 function findUserBylikedmovies(req, res) {
     movieModel

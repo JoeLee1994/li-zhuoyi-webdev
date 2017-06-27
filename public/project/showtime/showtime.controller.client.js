@@ -23,6 +23,10 @@
         function searchCityByName(name) {
             showtimeService
                 .searchCityByName(name)
+                .then(function (foundcity) {
+                    model.city = foundcity;
+                    return foundcity;
+                })
                 .then(searchCinemaByCity);
 
         }
@@ -31,9 +35,9 @@
         //     model.city = response;
         // }
 
-        function searchCinemaByCity(id) {
+        function searchCinemaByCity(city) {
             showtimeService
-                .searchCinemaByCity(id)
+                .searchCinemaByCity(city.id)
                 .then(renderCinemaDetails);
         }
 
@@ -58,7 +62,7 @@
                     .findCityByOwnID(response.id)
                     .then(function (found) {
                         if (found._id) {
-                            var index = currentUser.likedmovies.indexOf(found._id);
+                            var index = currentUser.likedcities.indexOf(found._id);
                             if (index > -1) {
                                 model.amIliking = true;
                                 return;
@@ -77,16 +81,16 @@
             }
         }
 
-        function likecity(city) {
-            console.log(city);
+        function likecity(id) {
+            console.log(id);
             if (!currentUser._id) {
                 alert("You have not logged in");
                 return;
             } else {
                 model.amIliking = true;
-                console.log(city);
+                console.log(id);
                 cityService
-                    .findCityByOwnID(city.id)
+                    .findCityByOwnID(id)
                     .then(function (foundcity) {
                         console.log(foundcity);
                         if (foundcity) {
@@ -97,25 +101,26 @@
                                 console.log(foundcity._id);
                                 userService
                                     .updateUser(currentUser._id, currentUser)
-                                    .then(function () {
-                                        cityService
-                                            .findCityById(foundcity._id)
-                                        // .then(function (movie) {
-                                        //     var index1 = movie.likedbyuser.indexOf(currentUser._id);
-                                        //     if (index1 === -1) {
-                                        //         console.log(movie.likedbyuser);
-                                        //         movie.likedbyuser.push(currentUser._id);
-                                        //         console.log(movie.likedbyuser);
-                                        //         movieService
-                                        //             .updateMovie(movie._id, movie);
-                                        //     }
-                                        // });
-                                    });
+                                    // .then(function () {
+                                    //     cityService
+                                    //         .findCityById(foundcity._id)
+                                    //     // .then(function (movie) {
+                                    //     //     var index1 = movie.likedbyuser.indexOf(currentUser._id);
+                                    //     //     if (index1 === -1) {
+                                    //     //         console.log(movie.likedbyuser);
+                                    //     //         movie.likedbyuser.push(currentUser._id);
+                                    //     //         console.log(movie.likedbyuser);
+                                    //     //         movieService
+                                    //     //             .updateMovie(movie._id, movie);
+                                    //     //     }
+                                    //     // });
+                                    // });
                             }
                         } else {
                             cityService
-                                .createCity(city)
+                                .createCity(model.city)
                                 .then(function (createdcity) {
+                                    console.log(createdcity);
                                     currentUser.likedcities.push(createdcity._id);
                                     console.log(currentUser.likedcities);
                                     console.log(createdcity._id);
@@ -141,10 +146,10 @@
             }
         }
 
-        function unlikecity(city) {
+        function unlikecity(id) {
             model.amIliking = false;
             cityService
-                .findCityByOwnID(city.id)
+                .findCityByOwnID(id)
                 .then(function (foundcity) {
                     console.log(foundcity._id);
                     console.log(currentUser);

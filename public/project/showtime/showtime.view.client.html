@@ -9,14 +9,17 @@
         Search
     </button>
 
-    <div class="list-group">
-        <h2>Cinemas in (name)</h2>
-        <a ng-click="model.likecity(model.city)">
+    <div>
+        <a ng-click="model.likecity(model.city.id)">
             <span ng-if="!model.amIliking" class="glyphicon glyphicon-heart-empty pull-right"></span>
         </a>
-        <a ng-click="model.unlikecity(model.city)">
+        <a ng-click="model.unlikecity(model.city.id)">
             <span ng-if="model.amIliking" class="glyphicon glyphicon-heart pull-right"></span>
         </a>
+    </div>
+
+    <div class="list-group">
+        <h2>Cinemas in {{name}}</h2>
         <ul ng-repeat="cinema in model.cinema"
             class="list-group-item">
         <li ng-click="model.searchMovieByCinema(cinema.id)">

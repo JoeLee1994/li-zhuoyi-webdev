@@ -23,6 +23,33 @@
                 controllerAs: 'model'
             })
 
+            .when('/search/user', {
+                templateUrl: 'views/search/template/search.view.client.html',
+                controller: 'searchController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
+            })
+
+            .when('/followings', {
+                templateUrl: 'views/follow/template/following.view.client.html',
+                controller: 'followingController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
+            })
+
+            .when('/followers', {
+                templateUrl: 'views/follow/template/follower.view.client.html',
+                controller: 'followerController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
+            })
+
             .when('/showtime', {
                 templateUrl: 'showtime/showtime.view.client.html',
                 controller: 'showtimeController',
@@ -48,7 +75,10 @@
             .when('/moviesonshow/:cinemaId', {
                 templateUrl: 'showtime/movie.view.client.html',
                 controller: 'movieController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
             })
 
             .when('/login', {

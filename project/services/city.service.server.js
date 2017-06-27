@@ -17,6 +17,7 @@ function createCity(req, res) {
     cityModel
         .createCity(city)
         .then(function (city) {
+            console.log(city);
             res.send(city);
         }, function (err) {
             res.send(err);

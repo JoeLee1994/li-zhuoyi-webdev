@@ -20,7 +20,8 @@
             return $http
                 .get(url)
                 .then(function (response) {
-                    return response.data.city.id;
+                    console.log(response);
+                    return response.data.city;
                 })
         }
 

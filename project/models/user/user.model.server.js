@@ -15,8 +15,23 @@ userModel.findUserByFacebookId = findUserByFacebookId;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
 userModel.findUserBylikedmovies = findUserBylikedmovies;
+userModel.searchByUsername = searchByUsername;
+userModel.findAllFollowings = findAllFollowings;
+userModel.findAllbefollowedbys = findAllbefollowedbys;
 
 module.exports = userModel;
+
+function findAllFollowings(following) {
+    return userModel.find({_id: {$in: following}});
+}
+
+function findAllbefollowedbys(follower) {
+    return userModel.find({_id: {$in: follower}});
+}
+
+function searchByUsername(keyword) {
+    return userModel.find({"username": new RegExp(keyword, 'i')});
+}
 
 function findUserBylikedmovies(movieTitle) {
     return userModel.find({likedmovies: movieTitle});

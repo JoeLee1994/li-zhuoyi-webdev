@@ -27,9 +27,39 @@
             updateUser: updateUser,
             deleteUser: deleteUser,
             unregister: unregister,
-            findAlllikedMovies: findAlllikedMovies
+            findAlllikedMovies: findAlllikedMovies,
+            searchByUsername: searchByUsername,
+            findAllFollowings: findAllFollowings,
+            findAllbefollowedbys: findAllbefollowedbys
         };
         return api;
+
+        function findAllFollowings(userId) {
+            var url = "/api/project/user/" + userId + "/followings";
+            return $http
+                .get(url)
+                .then(function (response) {
+                return response.data;
+            })
+        }
+
+        function findAllbefollowedbys(userId) {
+            var url = "/api/project/user/" + userId + "/befollowedbys";
+            return $http
+                .get(url)
+                .then(function (response) {
+                return response.data;
+            })
+        }
+
+        function searchByUsername(keyword) {
+            var url = "/api/project/search/user/" + keyword;
+            return $http
+                .get(url)
+                .then(function (response) {
+                return response.data;
+            });
+        }
 
         function findAlllikedMovies(userId) {
             var url = "/api/project/user/" + userId + "/likedmovies";
