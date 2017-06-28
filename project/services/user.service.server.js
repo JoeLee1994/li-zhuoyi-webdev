@@ -40,6 +40,7 @@ app.get    ('/api/project/user', findUserBylikedmovies);
 app.get    ('/api/project/search/user/:keyword', searchByUsername);
 app.get    ('/api/project/user/:userId/followings', findAllFollowings);
 app.get    ('/api/project/user/:userId/befollowedbys', findAllbefollowedbys);
+// app.get    ('/api/project/user/:userId/favoritemovies', findAllLikedMovies);
 
 
 
@@ -49,6 +50,18 @@ app.get('/auth/facebook/callback',
         successRedirect: '/project/index.html#!/profile',
         failureRedirect: '/project/index.html#!/login'
     }));
+
+// function findAllLikedMovies(req, res) {
+//     var userId = req.params.userId;
+//     movieModel
+//         .findAllLikedMovies(userId)
+//         .then(function (likedmovies) {
+//             res.json(likedmovies);
+//         }, function (err) {
+//             res.send(err);
+//         });
+// }
+
 
 function findAllFollowings(req, res) {
     var userId = req.params.userId;

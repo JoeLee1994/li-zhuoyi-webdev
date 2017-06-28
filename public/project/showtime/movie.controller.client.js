@@ -55,7 +55,7 @@
             console.log(response);
             if(currentUser){
                 cinemaService
-                    .findCinemaByOwnID(response.id)
+                    .findCinemaByOwnID(response.cinema.id)
                     .then(function(found){
                         if(found._id){
                             var index = currentUser.likedcinemas.indexOf(found._id);
@@ -77,24 +77,24 @@
             }
         }
 
-        function likecinema(city) {
-            console.log(movie);
+        function likecinema(cinema) {
+            console.log(cinema);
             if (!currentUser._id) {
                 alert("You have not logged in");
                 return;
             } else {
                 model.amIliking = true;
-                console.log(movie);
-                movieService
-                    .findMovieByImdbID(movie.imdbID)
-                    .then(function (foundmovie) {
-                        console.log(foundmovie);
-                        if (foundmovie) {
-                            var index = currentUser.likedmovies.indexOf(foundmovie._id);
+                console.log(cinema);
+                cinemaService
+                    .findCinemaByOwnID(cinema.id)
+                    .then(function (foundcinema) {
+                        console.log(foundcinema);
+                        if (foundcinema) {
+                            var index = currentUser.likedcinemas.indexOf(foundcinema._id);
                             if (index === -1) {
-                                currentUser.likedmovies.push(foundmovie._id);
-                                console.log(currentUser.likedmovies);
-                                console.log(foundmovie._id);
+                                currentUser.likedcinemas.push(foundcinema._id);
+                                console.log(currentUser.likedcinemas);
+                                console.log(foundcinema._id);
                                 userService
                                     .updateUser(currentUser._id, currentUser)
                                     // .then(function () {
@@ -113,12 +113,12 @@
                                     // });
                             }
                         } else {
-                            movieService
-                                .createMovie(movie)
-                                .then(function (createdmovie) {
-                                    currentUser.likedmovies.push(createdmovie._id);
-                                    console.log(currentUser.likedmovies);
-                                    console.log(createdmovie._id);
+                            cinemaService
+                                .createCinema(cinema)
+                                .then(function (createdcinema) {
+                                    currentUser.likedcinemas.push(createdcinema._id);
+                                    console.log(currentUser.likedcinemas);
+                                    console.log(createdcinema._id);
                                     userService
                                         .updateUser(currentUser._id, currentUser)
                                     // .then(function () {
@@ -141,16 +141,16 @@
             }
         }
 
-        function unlikecinema(id) {
+        function unlikecinema(cinema) {
             model.amIliking = false;
-            cityService
-                .findCityByOwnID(id)
-                .then(function (foundcity) {
-                    console.log(foundcity._id);
+            cinemaService
+                .findCinemaByOwnID(cinema.id)
+                .then(function (foundcinema) {
+                    console.log(foundcinema._id);
                     console.log(currentUser);
-                    var index = currentUser.likedcities.indexOf(foundcity._id);
+                    var index = currentUser.likedcinemas.indexOf(foundcinema._id);
                     if (index !== -1) {
-                        currentUser.likedcities.splice(index, 1);
+                        currentUser.likedcinemas.splice(index, 1);
                         userService
                             .updateUser(currentUser._id, currentUser)
                     }

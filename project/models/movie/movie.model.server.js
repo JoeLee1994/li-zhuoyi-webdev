@@ -8,8 +8,15 @@ movieModel.findMovieByImdbID = findMovieByImdbID;
 movieModel.deleteMovie = deleteMovie;
 movieModel.findAlllikedMovies = findAlllikedMovies;
 movieModel.updateMovie = updateMovie;
+// movieModel.findAllLikedMovies = findAllLikedMovies;
 
 module.exports = movieModel;
+
+
+// function findAllLikedMovies(userId) {
+//     return movieModel
+//         .find({_id: {$in: likedmovies}});
+// }
 
 function findAlllikedMovies() {
 	return movieModel.find();

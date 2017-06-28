@@ -31,8 +31,19 @@
             searchByUsername: searchByUsername,
             findAllFollowings: findAllFollowings,
             findAllbefollowedbys: findAllbefollowedbys
+            // findAllLikedMovies: findAllLikedMovies
         };
         return api;
+
+        // function findAllLikedMovies(userId) {
+        //     var url = "/api/project/user/" + userId + "/favoritemovies";
+        //     return $http
+        //         .get(url)
+        //         .then(function (response) {
+        //             console.log(response);
+        //             return response.data;
+        //         })
+        // }
 
         function findAllFollowings(userId) {
             var url = "/api/project/user/" + userId + "/followings";

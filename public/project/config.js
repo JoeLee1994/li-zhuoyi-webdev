@@ -50,6 +50,15 @@
                 }
             })
 
+            .when('/favoritemovies', {
+                templateUrl: 'views/favoritemovies/template/favoritemovie.view.client.html',
+                controller: 'favoritemovieController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
+            })
+
             .when('/showtime', {
                 templateUrl: 'showtime/showtime.view.client.html',
                 controller: 'showtimeController',

@@ -4,6 +4,8 @@
 var mongoose = require('mongoose');
 var userSchema = require('./user.schema.server');
 var userModel = mongoose.model('UserModel', userSchema);
+// var movieSchema = require('../movie/movie.schema.server');
+// var movieModel = mongoose.model("MovieModel", movieSchema);
 
 
 userModel.createUser = createUser;
@@ -18,8 +20,14 @@ userModel.findUserBylikedmovies = findUserBylikedmovies;
 userModel.searchByUsername = searchByUsername;
 userModel.findAllFollowings = findAllFollowings;
 userModel.findAllbefollowedbys = findAllbefollowedbys;
+// userModel.findAllLikedMovies = findAllLikedMovies;
 
 module.exports = userModel;
+
+
+//  function findAllLikedMovies(likedmovies) {
+//      return userModel.find(likedmovies: movieTitle});
+// }
 
 function findAllFollowings(following) {
     return userModel.find({_id: {$in: following}});
