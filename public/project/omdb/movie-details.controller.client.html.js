@@ -7,7 +7,7 @@
         .controller('movieDetailsController', movieDetailsController);
 
 
-    function movieDetailsController(omdbService, $routeParams, currentUser, userService, movieService) {
+    function movieDetailsController(omdbService, $routeParams, currentUser, userService, movieService, reviewService) {
 
         var model = this;
 
@@ -18,6 +18,71 @@
         model.likemovie = likemovie;
         model.unlikemovie = unlikemovie;
         model.queryLiking = queryLiking;
+        model.writereview = writereview;
+        // model.getMovieId = getMovieId;
+
+
+
+        function writereview(reviewcontent) {
+            movieService
+                .findMovieByImdbID(model.imdbID)
+                .then(function (foundmovie) {
+                    if(foundmovie){
+                        if(currentUser){
+                            var review = {
+                                reviewer: currentUser._id,
+                                movie: foundmovie._id,
+                                content: reviewcontent
+                            };
+                            console.log(review);
+                            reviewService
+                                .createReview(review)
+                        } else {
+                            alert("You have not logged in");
+                        }
+                    } else {
+                        omdbService
+                            .searchMovieByImdbID(model.imdbID)
+                            .then(function (foundmovie) {
+                            return movieService
+                                       .createMovie(foundmovie)
+                                .then(function (createdmovie) {
+                                    if(currentUser){
+                                        var review = {
+                                            reviewer: currentUser._id,
+                                            movie: createdmovie._id,
+                                            content: reviewcontent
+                                        };
+                                        console.log(review);
+                                        reviewService
+                                            .createReview(review)
+                                    } else {
+                                        alert("You have not logged in");
+                                    }
+                                })
+                        })
+                    }
+                })
+        }
+
+        // function writereview(reviewcontent) {
+        //     console.log(getMovieId)
+        //     getMovieId(model.imdbID)
+        //         .then(function (movie) {
+        //             if(currentUser){
+        //                 var review = {
+        //                     reviewer: currentUser._id,
+        //                     movie: movie._id,
+        //                     content: reviewcontent
+        //                 };
+        //                 console.log(review);
+        //                 reviewService
+        //                     .createReview(review)
+        //             } else {
+        //                 alert("You have not logged in");
+        //             }
+        //         })
+        // }
 
 
         function init() {

@@ -59,6 +59,24 @@
                 }
             })
 
+            .when('/favoritecities', {
+                templateUrl: 'views/favoritecities/template/favoritecity.view.client.html',
+                controller: 'favoritecityController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
+            })
+
+            .when('/favoritecinemas', {
+                templateUrl: 'views/favoritecinemas/template/favoritecinema.view.client.html',
+                controller: 'favoritecinemaController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
+            })
+
             .when('/showtime', {
                 templateUrl: 'showtime/showtime.view.client.html',
                 controller: 'showtimeController',

@@ -25,7 +25,12 @@
         <li ng-repeat="actor in model.movie.Actors.split(',')">
             {{actor}}
         </li>
+
     </ul>
+            <textarea ng-model="reviewcontent" rows="5" placeholder="Movie Review" class="form-control"></textarea>
+            <button ng-click="model.writereview(reviewcontent)" class="btn btn-primary btn-block">
+                Post
+            </button>
         </div>
     </div>
 </div>

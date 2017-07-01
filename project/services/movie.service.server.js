@@ -6,7 +6,7 @@ var userModel = require('../models/user/user.model.server');
 var movieModel = require('../models/movie/movie.model.server');
 
 app.get('/api/project/movies', findAlllikedMovies);
-app.get('/api/project/movies/:movieId', findMovieById);
+app.get('/api/project/movie/:movieId', findMovieById);
 app.put('/api/project/:movieId', updateMovie);
 app.get('/api/project/moviesByImdbId/:imdbID', findMovieByImdbID);
 app.post('/api/project/movie', createMovie);

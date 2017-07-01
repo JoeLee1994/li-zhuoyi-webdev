@@ -1,12 +1,12 @@
 /**
- * Created by Joe on 2017/6/27.
+ * Created by Joe on 2017/6/30.
  */
 (function () {
     angular
         .module('Project')
-        .controller('favoritemovieController', favoritemovieController);
+        .controller('favoritecinemaController', favoritecinemaController);
 
-    function favoritemovieController(currentUser, $location, userService, movieService) {
+    function favoritecinemaController(currentUser, $location, userService, cinemaService) {
         var model = this;
         var i;
 
@@ -15,7 +15,7 @@
         // model.unlikemovie = unlikemovie;
         // model.queryLiking = queryLiking;
         model.logout = logout;
-        model.movies = [];
+        model.cinemas = [];
 
 
 
@@ -24,18 +24,18 @@
                 .findUserById(model.userId)
                 .then(function (user) {
                     console.log(user);
-                    model.likedmovies = user.likedmovies;
-                    console.log(model.likedmovies);
-                    if(model.likedmovies.length === 0){
-                        model.message = "You have no favorite movies.";
+                    model.likedcinemas = user.likedcinemas;
+                    console.log(model.likedcinemas);
+                    if(model.likedcinemas.length === 0){
+                        model.message = "You have no favorite cinema.";
                     } else{
-                            for(var i=0; i < model.likedmovies.length; i++) {
-                                movieService
-                                    .findMovieById(model.likedmovies[i])
-                                    .then(function (foundmovie) {
-                                        model.movies.push(foundmovie);
-                                    });
-                            }
+                        for(var i=0; i < model.likedcinemas.length; i++) {
+                            cinemaService
+                                .findCinemaById(model.likedcinemas[i])
+                                .then(function (foundcinema) {
+                                    model.cinemas.push(foundcinema);
+                                });
+                        }
                     }
                 });
         }

@@ -18,3 +18,4 @@ require('./services/user.service.server');
 require('./services/city.service.server');
 require('./services/movie.service.server');
 require('./services/cinema.service.server');
+require('./services/review.service.server');
