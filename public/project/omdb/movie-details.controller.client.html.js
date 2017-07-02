@@ -14,6 +14,7 @@
         model.imdbID = $routeParams['movieId'];
         model.userId = currentUser._id;
         model.amIliking = false;
+        model.message = false;
 
         model.likemovie = likemovie;
         model.unlikemovie = unlikemovie;
@@ -37,6 +38,9 @@
                             console.log(review);
                             reviewService
                                 .createReview(review)
+                                .then(function () {
+                                    model.message = true;
+                                })
                         } else {
                             alert("You have not logged in");
                         }
@@ -56,6 +60,9 @@
                                         console.log(review);
                                         reviewService
                                             .createReview(review)
+                                            .then(function () {
+                                                model.message = true;
+                                            })
                                     } else {
                                         alert("You have not logged in");
                                     }
