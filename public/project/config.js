@@ -68,6 +68,15 @@
                 }
             })
 
+            .when('/favoritecinemas', {
+                templateUrl: 'views/favoritecinemas/template/favoritecinema.view.client.html',
+                controller: 'favoritecinemaController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
+            })
+
 
 
             .when('/reviews', {
