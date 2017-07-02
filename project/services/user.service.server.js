@@ -22,7 +22,7 @@ passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
 
 app.get    ('/api/project/user/:userId', findUserById);
 app.get    ('/api/project/user', findUserByUsername);
-app.get    ('/api/project/users', isAdmin, findAllUsers);
+app.get    ('/api/project/users', isAdminorPublisher, findAllUsers);
 app.get    ('/api/project/user', findUserByCredentials);
 app.post   ('/api/project/user', isAdmin, createUser);
 app.delete ('/api/project/user/:userId', isAdmin, deleteUser);
@@ -139,6 +139,17 @@ function isAdmin(req, res, next) {
         next(); // continue to next middleware;
     } else {
         res.sendStatus(401);
+    }
+}
+function isAdminorPublisher(req, res, next) {
+    if(req.isAuthenticated() && req.user.roles.indexOf('ADMIN') > -1) {
+        next(); // continue to next middleware;
+    } else {
+        if(req.isAuthenticated() && req.user.roles.indexOf('PUBLISHER') > -1){
+            next();
+        } else {
+            res.sendStatus(401);
+        }
     }
 }
 

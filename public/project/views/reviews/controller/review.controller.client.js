@@ -16,11 +16,12 @@
         
         function init() {
             reviewService
-                .findAllReviews
+                .findAllReviews()
                 .then(function (reviews) {
-                    for(var i=0, i < reviews.length, i++){
-                        if(reviews[i] === model.userId) {
+                    for(var i=0; i < reviews.length; i++){
+                        if(reviews[i].reviewer[0] === model.userId) {
                             model.reviews.push(reviews[i]);
+                            console.log(model.reviews);
                         }
                     }
                 });

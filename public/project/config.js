@@ -68,9 +68,11 @@
                 }
             })
 
-            .when('/favoritecinemas', {
-                templateUrl: 'views/favoritecinemas/template/favoritecinema.view.client.html',
-                controller: 'favoritecinemaController',
+
+
+            .when('/reviews', {
+                templateUrl: 'views/reviews/template/review.view.client.html',
+                controller: 'reviewController',
                 controllerAs: 'model',
                 resolve: {
                     currentUser: checkLoggedIn
@@ -149,6 +151,8 @@
 
             .when('/publisher', {
                 templateUrl: 'views/publisher/publisher.view.client.html',
+                controller: 'publisherController',
+                controllerAs: 'model',
                 resolve: {
                     currentUser: checkPublisher
                 }
