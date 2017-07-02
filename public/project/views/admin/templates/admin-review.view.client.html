@@ -1,0 +1,68 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#!/admin">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                Admin
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid" style="margin-top: 60px;">
+    <h1>Reviews</h1>
+
+    <ul class="list-group">
+        <li class="list-group-item active">
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+                    Movie ID
+                </div>
+                <div class="hidden-xs hidden-sm hidden-md col-lg-3">
+                    User Id
+                </div>
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-6">
+                    Content
+                </div>
+                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                </div>
+
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+                    <input ng-model="model.review.movie" class="form-control"/>
+                </div>
+                <div class="hidden-xs hidden-sm hidden-md col-lg-3">
+                    <input ng-model="model.review.reviewer" class="form-control"/>
+                </div>
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-6">
+                    <input ng-model="model.review.content" class="form-control"/>
+                </div>
+                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                    <span ng-click="model.updateReview(model.review);model.review={}" class="glyphicon glyphicon-ok pull-right"></span>
+                    <span ng-click="model.createReview(model.review);model.review={}" class="glyphicon glyphicon-plus pull-right"></span>
+                </div>
+
+            </div>
+        </li>
+        <li ng-repeat="review in model.reviews" class="list-group-item">
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+                    {{review.movie[0]}}
+                </div>
+                <div class="hidden-xs hidden-sm hidden-md col-lg-3">
+                    {{review.reviewer[0]}}
+                </div>
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-6">
+                    {{review.content}}
+                </div>
+                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                    <span ng-click="model.selectReview(review)" class="glyphicon glyphicon-pencil pull-right"></span>
+                    <span ng-click="model.deleteReview(review)" class="glyphicon glyphicon-remove pull-right"></span>
+                </div>
+            </div>
+
+        </li>
+    </ul>
+</div>

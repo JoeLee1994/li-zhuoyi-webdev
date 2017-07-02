@@ -1,15 +1,10 @@
-/**
- * Created by Joe on 2017/7/2.
- */
-/**
- * Created by Joe on 2017/6/17.
- */
+
 (function () {
     angular
         .module('Project')
-        .controller('adminlikedMovieController', adminlikedMovieController);
+        .controller('adminlikedCityController', adminlikedCityController);
 
-    function adminlikedMovieController(userService) {
+    function adminlikedCityController(userService) {
         var model = this;
 
         model.createUser = createUser;
@@ -23,9 +18,9 @@
         }
         init();
 
-        function deleteliking(user, likedmovieid) {
-            var index = user.likedmovies.indexOf(likedmovieid);
-            user.likedmovies.splice(index, 1);
+        function deleteliking(user, likedcityid) {
+            var index = user.likedcities.indexOf(likedcityid);
+            user.likedcities.splice(index, 1);
             userService
                 .updateUser(user._id, user)
         }

@@ -1,15 +1,13 @@
 /**
  * Created by Joe on 2017/7/2.
  */
-/**
- * Created by Joe on 2017/6/17.
- */
+
 (function () {
     angular
         .module('Project')
-        .controller('adminlikedMovieController', adminlikedMovieController);
+        .controller('adminlikedCinemaController', adminlikedCinemaController);
 
-    function adminlikedMovieController(userService) {
+    function adminlikedCinemaController(userService) {
         var model = this;
 
         model.createUser = createUser;
@@ -23,9 +21,9 @@
         }
         init();
 
-        function deleteliking(user, likedmovieid) {
-            var index = user.likedmovies.indexOf(likedmovieid);
-            user.likedmovies.splice(index, 1);
+        function deleteliking(user, likedcinemaid) {
+            var index = user.likedcinemas.indexOf(likedcinemaid);
+            user.likedcinemas.splice(index, 1);
             userService
                 .updateUser(user._id, user)
         }

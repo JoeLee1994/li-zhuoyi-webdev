@@ -148,6 +148,7 @@
                     currentUser: checkAdmin
                 }
             })
+
             .when('/admin/follow', {
                 templateUrl: 'views/admin/templates/admin-follow.view.client.html',
                 controller: 'adminFollowController',
@@ -156,6 +157,32 @@
                     currentUser: checkAdmin
                 }
             })
+
+            .when('/admin/likedmovies', {
+                templateUrl: 'views/admin/templates/admin-likedmovies.view.client.html',
+                controller: 'adminlikedMovieController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkAdmin
+                }
+            })
+            .when('/admin/likedcities', {
+                templateUrl: 'views/admin/templates/admin-likedcities.view.client.html',
+                controller: 'adminlikedCityController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkAdmin
+                }
+            })
+            .when('/admin/likedcinemas', {
+                templateUrl: 'views/admin/templates/admin-likedcinemas.view.client.html',
+                controller: 'adminlikedCinemaController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkAdmin
+                }
+            })
+
             .when('/admin/review', {
                 templateUrl: 'views/admin/templates/admin-review.view.client.html',
                 controller: 'adminReviewController',

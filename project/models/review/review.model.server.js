@@ -39,7 +39,7 @@ function deleteReview(reviewId) {
 function updateReview(reviewId, newReview) {
     delete newReview.reviewer;
     delete newReview.movie;
-    return updateReview({_id: reviewId}, {$set: newReview});
+    return reviewModel.update({_id: reviewId}, {$set: newReview});
 }
 
 
