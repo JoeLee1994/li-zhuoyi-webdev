@@ -148,6 +148,22 @@
                     currentUser: checkAdmin
                 }
             })
+            .when('/admin/follow', {
+                templateUrl: 'views/admin/templates/admin-follow.view.client.html',
+                controller: 'adminFollowController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkAdmin
+                }
+            })
+            .when('/admin/review', {
+                templateUrl: 'views/admin/templates/admin-review.view.client.html',
+                controller: 'adminReviewController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkAdmin
+                }
+            })
 
             .when('/profile', {
                 templateUrl: 'views/user/templates/profile.view.client.html',
