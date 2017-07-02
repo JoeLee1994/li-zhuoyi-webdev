@@ -1,25 +1,37 @@
-<link href="../../project/css/city.style.css" rel="stylesheet"/>
-<div class="container-fluid">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#!/showtime">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                Search
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid" style="margin-top:60px;">
 
     <div class="list-group">
-        <li>Cinema: {{model.cinema.name}}</li>
+        <div>
+            <h2 style="display:inline-block;margin-right:40px;">{{model.cinema.name}}</h2>
         <a ng-click="model.likecinema(model.cinema)">
-            <span ng-if="!model.amIliking" class="glyphicon glyphicon-heart-empty pull-right"></span>
+            <span ng-if="!model.amIliking" class="glyphicon glyphicon-heart-empty "></span>
         </a>
 
         <a ng-click="model.unlikecinema(model.cinema)">
-            <span ng-if="model.amIliking" class="glyphicon glyphicon-heart pull-right"></span>
+            <span ng-if="model.amIliking" class="glyphicon glyphicon-heart "></span>
         </a>
+        </div>
         <li>Telephone: {{model.cinema.telephone}}</li>
         <li>Website：<a>{{model.cinema.website}}</a></li>
         <li>Address: {{model.cinema.location.address.display_text}}</li>
-
-
-
-        <ul ng-repeat="movie in model.movie"
-            class="list-group-item">
-            <li>{{movie.title}}</li>
-            <img ng-src="{{movie.poster_image_thumbnail}}"/>
-        </ul>
     </div>
+</div>
+
+<div class="container-fluid" style="margin-top:20px;">
+    <h3>Movies On Show:</h3>
+    <ul class="list-group">
+        <li ng-repeat="movie in model.movie" class="list-group-item" style="text-align:center">
+            <h3>{{movie.title}}</h3>
+            <img ng-src="{{movie.poster_image_thumbnail}}" />
+    </ul>
 </div>

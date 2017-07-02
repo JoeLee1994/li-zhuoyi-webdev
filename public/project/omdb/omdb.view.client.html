@@ -1,27 +1,32 @@
-<link href="../../project/css/search.style.css" rel="stylesheet"/>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#!/">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                Home
+            </a>
+        </div>
+    </div>
+</nav>
 
-<div ng-controller="omdbController as model"
-     class="container-fluid">
-    <h1>OMDB API</h1>
-
+<div class="container-fluid" style="margin-top:40px;">
+    <h1>Search For Movie</h1>
     <div class="row">
-            <h2>Search</h2>
-            <input ng-model="title" class="form-control"/>
-
-            <button ng-click="model.searchByTitle(title)" class="btn btn-primary btn-block">
-                Search
-            </button>
-
-
-            <ul class="list-group">
-                <li ng-click="model.searchMovieByImdbID(movie.imdbID)" ng-repeat="movie in model.movies"
-                    class="list-group-item">
-                    <img ng-src="{{movie.Poster}}"/>
-                    {{movie.Title}}
-                    {{movie.imdbID}}
-                </li>
-            </ul>
+        <div class="col-lg-8">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for..." ng-model="title">
+                <span class="input-group-btn">
+        <button class="btn btn-default" type="button" ng-click="model.searchByTitle(title)">Go!</button>
+      </span>
+            </div>
         </div>
     </div>
 </div>
 
+<div class="container-fluid" style="margin-top:20px;">
+    <ul class="list-group">
+        <li ng-click="model.searchMovieByImdbID(movie.imdbID)" ng-repeat="movie in model.movies" class="list-group-item" style="text-align:center">
+            <h3>{{movie.Title}}</h3>
+            <img ng-src="{{movie.Poster}}" />
+    </ul>
+</div>

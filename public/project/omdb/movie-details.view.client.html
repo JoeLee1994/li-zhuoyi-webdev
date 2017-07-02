@@ -1,13 +1,25 @@
-<div class="container-fluid">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#!/search">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                Search
+            </a>
+        </div>
+    </div>
+</nav>
 
-    <h1>{{model.movie.Title}}</h1>
 
-    <a ng-click="model.likemovie(model.movie)">
-        <span ng-if="!model.amIliking" class="glyphicon glyphicon-heart-empty pull-right"></span>
+<div class="container-fluid" style="margin-top:40px;">
+
+    <h1 style="display:inline-block;">{{model.movie.Title}}</h1>
+
+    <a ng-click="model.likemovie(model.movie)" >
+        <span ng-if="!model.amIliking" class="glyphicon glyphicon-heart-empty "></span>
     </a>
 
-    <a ng-click="model.unlikemovie(model.movie)">
-        <span ng-if="model.amIliking" class="glyphicon glyphicon-heart pull-right"></span>
+    <a ng-click="model.unlikemovie(model.movie)" >
+        <span ng-if="model.amIliking" class="glyphicon glyphicon-heart"></span>
     </a>
 
     <!--<a ng-click="model.updateUser(model.userId, model.user)" class="navbar-link">-->
@@ -15,22 +27,20 @@
     <!--</a>-->
 
     <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            <img ng-src="{{model.movie.Poster}}" width="300px"/></div>
-        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" style="text-align:center;">
+            <img ng-src="{{model.movie.Poster}}" width="300px" style="padding:40px 0px;"/>
+        </div>
+        <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12" >
+            <div>
             <h4>{{model.movie.Director}}</h4>
             <p>{{model.movie.Plot}}</p>
             <h4>Cast</h4>
-    <ul>
-        <li ng-repeat="actor in model.movie.Actors.split(',')">
-            {{actor}}
-        </li>
-
-    </ul>
-            <textarea ng-model="reviewcontent" rows="5" placeholder="Movie Review" class="form-control"></textarea>
-            <button ng-click="model.writereview(reviewcontent)" class="btn btn-primary btn-block">
-                Post
-            </button>
+            <ul>
+                <li ng-repeat="actor in model.movie.Actors.split(',')">
+                    {{actor}}
+                </li>
+            </ul>
+            </div>
         </div>
     </div>
 </div>

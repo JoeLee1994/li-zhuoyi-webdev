@@ -1,30 +1,41 @@
-<link href="../../project/css/city.style.css" rel="stylesheet"/>
-<div class="container-fluid">
-    <h1>showtime API</h1>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#!/">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                Home
+            </a>
+        </div>
+    </div>
+</nav>
 
-    <h2>Search</h2>
-    <input ng-model="name" class="form-control"/>
-
-    <button ng-click="model.searchCityByName(name)" class="btn btn-primary btn-block">
-        Search
-    </button>
+<div class="container-fluid" style="margin-top:40px;">
 
     <div>
+        <h2 style="display:inline-block;margin-right:40px;">Cinemas in {{name?name:'...'}}</h2>
         <a ng-click="model.likecity(model.city.id)">
-            <span ng-if="!model.amIliking" class="glyphicon glyphicon-heart-empty pull-right"></span>
-        </a>
+            <span ng-if="!model.amIliking" class="glyphicon glyphicon-heart-empty "></span>
+            </a>
         <a ng-click="model.unlikecity(model.city.id)">
-            <span ng-if="model.amIliking" class="glyphicon glyphicon-heart pull-right"></span>
-        </a>
+            <span ng-if="model.amIliking" class="glyphicon glyphicon-heart"></span>
+            </a>
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for..." ng-model="name">
+                <span class="input-group-btn">
+        <button class="btn btn-default" type="button" ng-click="model.searchCityByName(name)">Go!</button>
+      </span>
+            </div>
+        </div>
     </div>
 
-    <div class="list-group">
-        <h2>Cinemas in {{name}}</h2>
-        <ul ng-repeat="cinema in model.cinema"
-            class="list-group-item">
-        <li ng-click="model.searchMovieByCinema(cinema.id)">
-            Cinema: {{cinema.name}}
-        </li>
+    <div class="list-group" style="margin-top:40px;">
+        <ul ng-repeat="cinema in model.cinema" class="list-group-item" style="padding-left:40px;">
+            <li ng-click="model.searchMovieByCinema(cinema.id)">
+                Cinema:  <span style="color:dodgerblue;text-decoration:underline;cursor:pointer;">{{cinema.name}}</span>
+            </li>
             <li>Telephone: {{cinema.telephone}}</li>
             <li>Website: {{cinema.website}}</li>
         </ul>

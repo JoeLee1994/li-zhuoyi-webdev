@@ -3,7 +3,7 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="#!/">
                 <span class="glyphicon glyphicon-chevron-left"></span>
-                Profile
+                Home
             </a>
             <p class="navbar-text pull-right">
                 <a ng-click="model.updateUser(model.userId, model.user)" class="navbar-link">
@@ -16,7 +16,7 @@
 
 
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top:60px;">
         <h1>Profile</h1>
 
         <div ng-show="model.error" class="alert alert-danger">
@@ -58,24 +58,24 @@
 
         </form>
 
-        <a class="btn btn-primary btn-block"
+                    <a class="btn btn-primary btn-block" style="margin-top:20px;"
            href="#!/favoritemovies">Favorite Movies</a>
-        <a class="btn btn-primary btn-block"
-           href="#!/favoritecities">Favorite Cities</a>
-        <a class="btn btn-primary btn-block"
+        <a class="btn btn-primary btn-block" style="margin-top:20px;"
+           href="#!/favoritecities">Favorite Cities</a> 
+        <a class="btn btn-primary btn-block" style="margin-top:20px;"
            href="#!/favoritecinemas">Favorite Cinemas</a>
-        <a class="btn btn-primary btn-block"
-           href="#!/reviews">reviews</a>
-        <a class="btn btn-primary btn-block"
+        <a class="btn btn-primary btn-block" style="margin-top:20px;"
+           href="#!/reviews">Reviews</a>
+        <a class="btn btn-primary btn-block" style="margin-top:20px;"
            href="#!/followings">Followings</a>
-        <a class="btn btn-primary btn-block"
+        <a class="btn btn-primary btn-block" style="margin-top:20px;"
            href="#!/followers">Followers</a>
-        <a class="btn btn-block btn-success"
+        <a class="btn btn-block btn-success" style="margin-top:20px;"
            ng-click="model.updateUser(model.userId, model.user)">Update</a>
-        <a class="btn btn-block btn-danger"
-           ng-click="model.unregister()">Unregister</a>
-        <a class="btn btn-danger  btn-block"
+        <a class="btn btn-block btn-danger" style="margin-top:20px;"
+           ng-click="model.unregister()">Unregister</a> 
+        <a class="btn btn-danger  btn-block" style="margin-top:20px;"
            ng-click="model.logout()">Logout</a>
     </div>
 
-<div ng-include="'views/common/footer.view.client.html'"></div>
+
