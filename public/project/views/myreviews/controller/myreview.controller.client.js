@@ -1,27 +1,25 @@
 /**
- * Created by Joe on 2017/6/30.
+ * Created by Joe on 2017/7/2.
  */
 (function () {
     angular
         .module('Project')
-        .controller('reviewController', reviewController);
+        .controller('myReviewController', myReviewController);
 
-    function reviewController(currentUser, $location, reviewService) {
+    function myReviewController(currentUser, $location, reviewService, userService) {
         var model = this;
-        var i;
 
         model.userId = currentUser._id;
         model.logout = logout;
         model.reviews = [];
-        
+
         function init() {
             reviewService
                 .findAllReviews()
                 .then(function (reviews) {
-                    for(var i=0; i < reviews.length; i++){
-                        if(reviews[i].reviewer[0] === model.userId) {
+                    for (var i =0; i< reviews.length; i++){
+                        if(currentUser._id === reviews[i].reviewer[0]){
                             model.reviews.push(reviews[i]);
-                            console.log(model.reviews);
                         }
                     }
                 });

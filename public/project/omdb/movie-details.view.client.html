@@ -40,6 +40,10 @@
                     {{actor}}
                 </li>
             </ul>
+                <textarea ng-model="reviewcontent" rows="5" placeholder="Movie Review" class="form-control" style="margin-top: 40px;"></textarea>
+                <button ng-click="model.writereview(reviewcontent)" class="btn btn-primary btn-block" style="margin-top: 20px;">
+                    Post
+                </button>
             </div>
         </div>
     </div>

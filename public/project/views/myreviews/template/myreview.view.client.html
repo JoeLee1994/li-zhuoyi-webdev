@@ -9,14 +9,15 @@
     </div>
 </nav>
 <div class="container-fluid" style="margin-top: 60px;">
-    <h3>Favorite Movies</h3>
-    <div ng-show="model.message" class="alert alert-info">
-        {{model.message}}
+    <h3>My Reviews</h3>
+    <div ng-show="model.reviews.length === 0" class="alert alert-info">
+        You have no reviews.
     </div>
+
     <div class="list-group">
-        <ul class="list-group-item" ng-repeat="movie in model.movies" style="padding-left: 20px;">
+        <ul class="list-group-item" ng-repeat="review in model.reviews" style="padding-left: 20px;">
             <li >
-                {{movie.Title}}
+                {{review.content}}
             </li>
         </ul>
     </div>

@@ -1,11 +1,23 @@
-<div class="container-fluid">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#!/profile">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                Profile
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid" style="margin-top: 60px;">
+    <h3>Favorite Cinemas</h3>
     <div ng-show="model.message" class="alert alert-info">
         {{model.message}}
     </div>
-
-    <ul class="list-group">
-        <li ng-repeat="cinema in model.cinemas">
-            {{cinema.name}}
-        </li>
-    </ul>
+    <div class="list-group">
+        <ul class="list-group-item" ng-repeat="cinema in model.cinemas" style="padding-left: 20px;">
+            <li >
+                {{cinema.name}}
+            </li>
+        </ul>
+    </div>
 </div>

@@ -77,11 +77,9 @@
                 }
             })
 
-
-
             .when('/reviews', {
-                templateUrl: 'views/reviews/template/review.view.client.html',
-                controller: 'reviewController',
+                templateUrl: 'views/myreviews/template/myreview.view.client.html',
+                controller: 'myReviewController',
                 controllerAs: 'model',
                 resolve: {
                     currentUser: checkLoggedIn
